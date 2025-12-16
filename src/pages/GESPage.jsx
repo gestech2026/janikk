@@ -12,7 +12,7 @@ import { FiPhone, FiMail } from "react-icons/fi";
 
 import BackIllustration from "../assets/images/GES/GESIntroBack.svg";
 import IntroImg from "../assets/images/GES/IntroImg.svg";
-import page from "../assets/images/GES/page.svg";
+import page from "../assets/images/GES/Page.svg";
 import ImageCarousel from "../components/ImageCarousel.jsx";
 import img1 from "../assets/images/GES/DesignImg1.png";
 import img2 from "../assets/images/GES/DesignImg2.png";
