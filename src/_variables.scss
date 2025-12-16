@@ -1,0 +1,105 @@
+@import "./assets/fonts/fonts.scss";
+// ===================================
+// 🎨 COLORS
+// ===================================
+
+// // Brand Colors (Client-specific)
+// $color-brand-primary: #610202; // Example: Blue for main buttons/links
+// $color-brand-secondary: #6c757d; // Example: Gray for secondary actions
+// $color-brand-accent: #28a745; // Example: Green for success/highlight
+
+// // Neutral Colors (Text, Borders, Backgrounds)
+// $color-neutral-dark: #212529; // Deep dark text
+$color-neutral-medium: #495057; // Secondary text
+$color-neutral-light: #f8f9fa; // Light gray background
+// $color-neutral-white: #ffffff; // Pure white
+
+// // Status Colors
+// $color-status-success: #28a745;
+// $color-status-warning: #ffc107;
+// $color-status-error: #dc3545;
+
+// src/styles/_variables.scss (UPDATED with Figma Colors)
+
+// ===================================
+// 🎨 COLORS (Derived from Figma Export)
+// ===================================
+$color-neutral-white: #ffffff; // Pure white
+
+// --- Primary Brand Palette ---
+$color-brand-primary-01: #fed601; // Primary - 01 (Bright Yellow/Gold)
+$color-brand-primary-02: #ece3b1; // Primary - 02 (Light Yellow/Beige)
+$color-brand-primary-03: #fef5c4; // Primary - 03 (Very Light Yellow/Cream)
+$color-neutral-dark: #0e0202;
+// --- Secondary Brand Palette (Dark/Accent) ---
+$color-brand-secondary-01: #610202; // Secondary - 01 (Deep Red/Brown)
+$color-brand-secondary-02: #f0cbcb; // Secondary - 02 (Light Pink)
+$color-brand-secondary-03: #ffdfdf; // Secondary - 03 (Very Light Pink)
+
+// --- Tertiary Accent / Action Color (The red button color) ---
+$color-brand-tertiary: #ec1f36; // Teritiary - 01 (Bright Red/Action Color)
+
+// --- Text and Neutral Colors ---
+$color-text-heading: #0e0202; // Heading (Near Black)
+$color-text-body: #383838; // Body Text (Dark Gray)
+
+// --- White and Light Neutrals ---
+$color-neutral-white-01: #ffffff; // White 01 (Pure White)
+$color-neutral-white-02: #f5f5f5; // White 02 (Off-White/Light Gray)
+
+// --- Consolidated Global Variables (Mapping Figma to Functional Roles) ---
+// Use these names in your components for clarity (e.g., $color-primary)
+
+$color-primary: $color-brand-primary-01; // Main use color
+$color-secondary: $color-brand-secondary-01; // Dark accent/secondary content color
+$color-accent: $color-brand-tertiary; // Used for "Apply Now" buttons and highlights
+
+$color-text-dark: $color-text-heading;
+$color-text-light: $color-text-body;
+$color-background-light: $color-neutral-white-02;
+$color-background-white: $color-neutral-white-01;
+
+// ===================================
+// 📐 SPACING
+// ===================================
+// Use a scale based on an 8px or 4px unit for consistent rhythm.
+$spacing-unit: 1rem; // Base unit (16px)
+
+$spacing-xs: $spacing-unit * 0.25; // 4px
+$spacing-sm: $spacing-unit * 0.5; // 8px
+$spacing-md: $spacing-unit; // 16px (Base)
+$spacing-lg: $spacing-unit * 1.5; // 24px
+$spacing-xl: $spacing-unit * 2; // 32px
+$spacing-xxl: $spacing-unit * 3; // 48px
+
+// ===================================
+// ✍️ TYPOGRAPHY
+// ===================================
+
+// Font Families
+$font-family-primary: "Montserrat", sans-serif;
+$font-family-secondary: "Georgia", serif; // For headings or specific sections
+
+// Font Sizes (Based on 16px body, using 'rem' for accessibility)
+$font-size-base: 16px; // Body text (16px)
+
+$font-size-h1: $font-size-base * 2.5; // 40px
+$font-size-h2: $font-size-base * 2; // 32px
+$font-size-h3: $font-size-base * 1.75; // 28px
+$font-size-h4: $font-size-base * 1.5; // 24px
+$font-size-h5: $font-size-base * 1.25; // 20px
+$font-size-h6: $font-size-base * 1.1; // 17.6px
+
+$font-size-small: $font-size-base * 0.875; // 14px (Utility/Caption)
+
+// Font Weights
+$font-weight-light: 300;
+$font-weight-normal: 400;
+$font-weight-medium: 500;
+$font-weight-bold: 700;
+
+// ===================================
+// ⚙️ OTHER CONFIG (Borders, Shadows, Z-index)
+// ===================================
+$border-radius-base: 0.3rem;
+$box-shadow-base: 0 0.5rem 1rem rgba($color-neutral-dark, 0.15);

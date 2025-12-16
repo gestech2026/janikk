@@ -1,0 +1,104 @@
+// src/components/GenericCarousel/GenericCarousel.module.scss
+
+@import '../variables';
+@import '../mixins';
+
+.carouselWrapper {
+  position: relative;
+  overflow: hidden;
+  padding: $spacing-md 0; // Space for the dots and arrows
+}
+
+.carouselContainer {
+  overflow: hidden; // Hides the items outside the viewport
+}
+
+.carouselTrack {
+  display: flex;
+  transition: transform 0.5s ease-in-out; // Smooth transition for sliding
+  will-change: transform;
+}
+
+.carouselItem {
+  // Use a simple flex-basis if you prefer, but the inline style in JSX 
+  // calculates the width dynamically based on the number of items shown.
+  flex-shrink: 0; // Essential: prevents items from shrinking
+  
+  // Example for fixed mobile width if inline style is too complex:
+  @include media('sm', 'down') {
+    min-width: 100%; // Show one item at a time on small screens
+  }
+}
+
+
+// ------------------------------------
+// Navigation Arrows
+// ------------------------------------
+.arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba($color-text-dark, 0.4);
+  color: $color-background-white;
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  z-index: 10;
+  
+  &:hover {
+    background: $color-primary; // Use your primary color on hover
+  }
+  
+  // Hide arrows on mobile for a cleaner look
+  @include media('sm', 'down') {
+    display: none;
+  }
+}
+
+.prev {
+  left: $spacing-md;
+}
+
+.next {
+  right: $spacing-md;
+}
+
+
+// ------------------------------------
+// Navigation Dots
+// ------------------------------------
+.dotNavigation {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: $spacing-sm; 
+  z-index: 10;
+  margin-top: $spacing-md;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  background-color: rgba($color-text-dark, 0.3);
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+
+  &.activeDot {
+    background-color: $color-primary; // Active dot uses your primary color
+    transform: scale(1.2);
+  }
+  
+  &:hover {
+    background-color: $color-primary;
+  }
+}

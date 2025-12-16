@@ -1,0 +1,43 @@
+// src/styles/_mixins.scss (Corrected Version)
+
+// 📐 BREAKPOINTS
+// Define standard device breakpoints (Mobile-First approach)
+$breakpoints: (
+  'sm': 576px,  // Small devices (landscape phones)
+  'md': 768px,  // Medium devices (tablets)
+  'lg': 992px,  // Large devices (desktops)
+  'xl': 1200px, // Extra large devices (large desktops)
+  'xxl': 1400px // Extra extra large devices
+) !default;
+
+// ⚙️ MEDIA MIXIN
+// Usage: @include media('md') { ... styles for medium and up ... }
+// Usage: @include media('lg', 'down') { ... styles for tablets and down ... }
+@mixin media($breakpoint, $direction: 'down') {
+  $size: map-get($breakpoints, $breakpoint);
+
+  @if $size {
+    @if $direction == 'up' {
+      // ➡️ Styles for MIN-WIDTH (Mobile-first: applies to the breakpoint and UP)
+      @media (min-width: $size) {
+        @content;
+      }
+    } @else if $direction == 'down' {
+      // ⬇️ Styles for MAX-WIDTH (applies to the breakpoint's size and DOWN)
+      // We calculate the max-width by subtracting a very small unit (e.g., 1px) 
+      // from the next largest breakpoint size. Since SCSS handles unit arithmetic,
+      // subtracting 1px from 992px results in 991px.
+
+      // Note: We use the size of the *current* breakpoint to define the MAX-WIDTH.
+      // E.g., @include media('md', 'down') applies to max-width: 767px.
+      
+      $max-size: $size - 1px;
+
+      @media (max-width: $max-size) {
+        @content;
+      }
+    }
+  } @else {
+    @warn "Breakpoint '#{$breakpoint}' not found in $breakpoints map.";
+  }
+}

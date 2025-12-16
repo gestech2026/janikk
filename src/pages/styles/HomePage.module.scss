@@ -1,0 +1,407 @@
+// src/components/HeroCarousel/HeroCarousel.module.scss
+
+// Import global variables and the responsive mixin
+@import '../../variables';
+@import '../../mixins';
+.HomePage{
+    width: 100%;
+    // height: 100vh;
+    overflow: hidden;
+}
+.heroSection { 
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  height: 100dvh; // Default height for smaller screens
+
+}
+
+.carouselContainer {
+  display: flex;
+  height: 100%;
+}
+
+.sliderTrack {
+  display: flex;
+  height: 100%;
+  width: 100%; // Important: The track itself is 100% wide initially
+  transition: transform 0.6s ease-in-out;
+  will-change: transform; // Performance optimization
+}
+
+.slide {
+  flex-shrink: 0; // Ensures slides don't shrink
+  width: 100%; // Each slide occupies 100% of the container width
+  height: 100%;
+  position: relative;
+}
+
+.slideImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; // Ensures the image covers the entire area without distortion
+  display: block;
+  object-position: 10% 30%;
+}
+
+// ------------------------------------
+// Text Overlay
+// ------------------------------------
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  // Subtle gradient overlay for better text contrast
+  background-color: rgba($color-neutral-dark, 0.4); 
+  color: $color-neutral-white;
+  padding: $spacing-xl;
+}
+
+.title {
+  font-size: $font-size-h2;
+  margin-bottom: $spacing-sm;
+
+  @include media('md') {
+    font-size: $font-size-h1; // Larger font on tablets+
+  }
+}
+
+.caption {
+  font-size: $font-size-base;
+  max-width: 80%;
+
+  @include media('md') {
+    font-size: $font-size-h5; // Slightly larger caption on tablets+
+  }
+}
+
+
+// ------------------------------------
+// Navigation Dots
+// ------------------------------------
+.dotNavigation {
+  position: absolute;
+  bottom: $spacing-lg;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: $spacing-sm; // Space between dots
+  z-index: 10;
+}
+
+.dot {
+  width: 12px;
+  height: 12px;
+  background-color: rgba($color-neutral-white, 0.5);
+  border: 1px solid $color-neutral-white;
+  border-radius: 50%;
+  padding: 0;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+
+  &.activeDot {
+    background-color: $color-brand-secondary-01; // Active dot uses primary brand color
+    transform: scale(1.2);
+  }
+
+  &:hover {
+    background-color: rgba($color-neutral-white, 0.8);
+  }
+}
+
+
+// ------------------------------------
+// Navigation Arrows (Optional)
+// ------------------------------------
+.arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba($color-neutral-dark, 0.5);
+  color: $color-neutral-white;
+  border: none;
+  padding: $spacing-md $spacing-sm;
+  cursor: pointer;
+  font-size: $font-size-h4;
+  z-index: 10;
+  transition: background 0.3s ease;
+
+  &:hover {
+    background: rgba($color-brand-secondary-01, 0.8);
+  }
+}
+
+.prev {
+  left: 0;
+  border-radius: 0 $border-radius-base $border-radius-base 0;
+}
+
+.next {
+  right: 0;
+  border-radius: $border-radius-base 0 0 $border-radius-base;
+}
+
+// ------------------------------------
+// About Us Section
+// ------------------------------------
+.aboutUsContainer {
+  max-width: 1400px; // A safe maximum width for content
+  margin: $spacing-xxl auto; // Center content and add vertical padding
+  padding: 0 $spacing-lg;
+
+  @include media('lg') {
+    padding: 0 $spacing-xxl; // More padding on large screens
+  }
+}
+
+// ===================================================
+// 1. TOP SECTION (About Us Hero)
+// ===================================================
+.abtSection {
+  display: flex;
+  flex-direction: row; // Default stacking for mobile
+padding: 70px;gap: 120px;
+  @include media('lg' ,'down') {
+    flex-direction: row; // Side-by-side for tablets and up
+    gap: $spacing-xl; background-color: red;
+    align-items: center;
+  }
+@include media('md', 'down') {
+  padding: 40px; flex-direction: column;
+}
+@include media('sm', 'down') {
+  padding: 20px; flex-direction: column;
+}
+}
+
+.contentColumn {
+  flex: 1;
+  padding-right: $spacing-md; // Add slight gap
+}
+
+.imageColumn {
+  flex: 1;
+  margin-top: $spacing-lg; // Space below text on mobile
+
+  @include media('md') {
+    margin-top: 0; // Remove top margin on desktop
+  }
+}
+
+.heading {
+  font-size: $font-size-h1;
+  color: $color-neutral-dark;
+  margin-bottom: $spacing-md;
+}
+
+.description {
+  font-size: $font-size-base;
+  color: $color-text-body;
+  line-height: 1.7;
+  margin-bottom: $spacing-xl;
+}
+
+.mainImage {
+  width: 100%;
+  height: auto;
+  max-height: 446px;
+  // Apply a slight border radius to match the design style
+  border-radius: $border-radius-base; 
+  display: block;
+}
+
+.knowMoreButton {
+  // Use styling similar to the "Apply Now" button but perhaps less intense
+  display: inline-block;
+  padding: $spacing-md $spacing-xl;
+  background-color: $color-brand-secondary-01; // Or the deep red from the image
+  color: $color-neutral-white;
+  font-weight: $font-weight-bold;
+  text-decoration: none;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  
+  &:hover {
+    background-color: darken($color-brand-secondary-01, 10%);
+  }
+}
+
+// ===================================================
+// 2. BOTTOM SECTION (Mission & Vision)
+// ===================================================
+.bottomSection {
+  display: flex;
+  flex-direction: row; // Reverse order for mobile (Image below text)
+
+  @include media('md') {
+    flex-direction: row; // Side-by-side for tablets and up
+    gap: $spacing-xl;
+    margin-top: $spacing-xxl; // Space from the top section
+  }
+}
+
+.bottomSection .imageColumn {
+  flex: 1;
+  margin-top: $spacing-lg;
+}
+
+.lowerImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: $border-radius-base;
+  min-height: 300px; // Ensure image is visible on desktop
+  max-height: 552px; background-color: red;
+} 
+
+.textColumn {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-xl;
+}
+
+.card {
+  background-color: $color-neutral-light; // Light background for the cards
+  padding: $spacing-xl;
+  border-radius: $border-radius-base;
+  // Slight shadow to match the look
+  box-shadow: 0 4px 6px rgba($color-neutral-dark, 0.05);
+}
+
+.cardHeader {
+  display: flex;
+  align-items: center;
+  margin-bottom: $spacing-md;
+}
+
+.cardIcon {
+  font-size: $font-size-h4; // Medium size icon
+  color: $color-brand-secondary-01;
+  margin-right: $spacing-sm;
+}
+
+.cardTitle {
+  font-size: $font-size-h4;
+  font-weight: $font-weight-bold;
+  margin: 0; // Reset default margin from base styles
+}
+
+.cardContent {
+  font-size: $font-size-small; // Slightly smaller text for card content
+  color: $color-text-body;
+  line-height: 1.6;
+  margin-bottom: 0;
+}
+
+// ===================================================
+// . Immersion
+// ===================================================
+.immersionPage {
+  // Use the Secondary color for the dark background, as seen in the design
+ border-radius: 80px;
+background-color: #00183F; padding: 70px;
+}
+
+.heroSection {
+  // Center content horizontally
+  // max-width: 1400px; 
+  margin: 0 auto;
+  padding: 0 $spacing-lg; // Add side padding for smaller screens
+
+  display: flex;
+  flex-direction: column; // Stack columns vertically by default (mobile-first)
+  gap: $spacing-xl;
+  
+  // Layout change for tablets and larger
+  @include media('md') {
+    flex-direction: row; // Side-by-side layout
+    gap: $spacing-xxl;
+    padding: 0 $spacing-xxl; // Larger side padding
+    align-items: flex-start; // Align top of the content columns
+  }
+}
+
+// ------------------------------------
+// Text Container (Left side)
+// ------------------------------------
+.textContainer {
+  flex: 1.2; // Give the text slightly more space than the image
+  color: $color-neutral-white-01; // All text is white
+  padding-top: $spacing-md; // Slight top offset to balance with image
+  display: flex;
+  flex-direction: row;
+  @include media('md') {
+    padding-top: 0; 
+  }
+}
+
+.heading {
+color: var(--Colours-White-01, #FFF);
+font-family: Montserrat;
+font-size: 48px;
+font-style: normal;
+font-weight: 700;
+line-height: 150%; /* 72px */
+  
+  @include media('md') {
+    font-size: $font-size-h1 * 1.2; // Make heading larger on desktop
+  }
+}
+
+.description {
+color: var(--Colours-White-01, #FFF);
+font-family: Montserrat;
+font-size: 16px;
+font-style: normal;
+font-weight: 400;
+line-height: 150%; /* 24px */
+}
+
+.knowMoreButton {
+  // This button is white with dark text, contrasting the main red 'Apply Now' button
+  padding: $spacing-md $spacing-xl;
+  background-color: $color-neutral-white-01;
+  color: $color-text-body; 
+  font-weight: $font-weight-medium;
+  border: none;
+  border-radius: $border-radius-base; // Use your global radius
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  
+  &:hover {
+    background-color: $color-brand-primary-01; // Subtle change to your primary yellow on hover
+    color: $color-text-dark;
+  }
+}
+
+// ------------------------------------
+// Image Container (Right side)
+// ------------------------------------
+.imageContainer {
+  flex: 2;
+  // Ensure the image container doesn't exceed the screen width
+  width: 100%; 
+}
+
+.featuredImage {
+  width: 100%;
+  height: auto;
+  display: block;
+  // The design has significant rounded corners
+  border-radius: $spacing-xl; 
+
+  @include media('md') {
+    // Increase rounding on larger screens for effect
+    border-radius: $spacing-xxl; 
+  }
+}

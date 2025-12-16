@@ -1,0 +1,58 @@
+@import "../variables";
+@import "../mixins";
+
+.subNavbar {
+  margin: auto;
+
+  // margin-top: 80px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px;
+  background: #fff;
+  border-radius: 14px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+  position: relative;
+  z-index: 10;
+  transition: all 0.3s ease;
+  max-width: 900px;
+  border-radius: 14px;
+  background: var(--Colours-White-01, #fff);
+  box-shadow: 0 4px 10px 0 rgba(4, 4, 4, 0.14);
+  @include media("md", "down") {
+    display: none;
+  }
+}
+
+.sticky {
+  position: sticky;
+  top: 80px; // space from top
+}
+
+.tab {
+  border: none;
+  background: transparent;
+  padding: 10px 16px;
+  border-radius: 999px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  color: #555;
+  transition: all 0.25s ease;
+  color: var(--Colours-Secondry---01, #610202);
+  text-align: center;
+  font-family: Montserrat;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 150%; /* 27px */
+  &:hover {
+    background: #f2f2f2;
+  }
+}
+
+.active {
+  border-radius: 30px;
+  background: var(--Colours-Secondry---03, #ffdfdf);
+  color: #d33;
+}

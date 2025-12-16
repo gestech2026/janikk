@@ -1,0 +1,71 @@
+// ===================================
+// 🧹 CSS RESET (A light reset to normalize things)
+// ===================================
+@import "./assets/fonts/fonts.scss";
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+// ===================================
+// 🌐 GLOBAL BODY/HTML STYLES
+// ===================================
+html {
+  font-size: 16px; // Defines the base for 'rem'
+}
+
+body {
+  font-family: $font-family-primary;
+  font-size: $font-size-base;
+  line-height: 1.6;
+  color: $color-neutral-dark;
+  background-color: $color-neutral-white;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: justify;
+ 
+}
+ ::-webkit-scrollbar {
+   display: none;
+  }
+// ===================================
+// ✍️ TYPOGRAPHY STYLES
+// ===================================
+
+h1, h2, h3, h4, h5, h6 {
+   font-family: $font-family-primary;
+
+  color: $color-neutral-dark;
+  margin-top: $spacing-md;
+  margin-bottom: $spacing-sm;
+  line-height: 1.2; 
+  margin: 0;
+}
+
+h1 { font-size: $font-size-h1; font-weight: $font-weight-bold; }
+h2 { font-size: $font-size-h2; font-weight: $font-weight-bold; }
+h3 { font-size: $font-size-h3; font-weight: $font-weight-medium; }
+h4 { font-size: $font-size-h4; font-weight: $font-weight-medium; }
+h5 { font-size: $font-size-h5; font-weight: $font-weight-normal; }
+h6 { font-size: $font-size-h6; font-weight: $font-weight-normal; }
+
+p {
+  margin-bottom: $spacing-md;
+}
+
+// ===================================
+// 🔗 LINK STYLES
+// ===================================
+a {
+  // color: $color-brand-primary;
+  text-decoration: none; // Start clean
+  transition: color 0.3s ease;
+
+  &:hover {
+    // color: darken($color-brand-primary, 10%); // Slightly darker on hover
+    text-decoration: underline;
+  }
+}

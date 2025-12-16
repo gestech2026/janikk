@@ -1,0 +1,78 @@
+// src/components/Header/Header.module.scss
+
+// Import variables from your global setup
+@import '../../_variables.scss'; // Adjust path as necessary
+
+.header {
+  // Use Flexbox to align logo, navigation, and button
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: $spacing-md $spacing-xl; // Use your global spacing variables
+  background-color:transparent; // Assuming white background for header area
+  // box-shadow: 0 2px 4px rgba($color-neutral-dark, 0.05);
+  position: fixed; // Make it sticky on scroll
+  top: 0; width: 100%;
+  z-index: 1000; // High z-index to stay on top
+}
+
+.logoContainer {
+  .logo {
+    height: 60px; // Adjust based on the actual logo size
+    width: auto;
+    display: block; // Ensures no extra margin below the image
+  }
+}
+
+.navMenu {
+  flex-grow: 1; // Allows the navigation to take up available space
+  display: flex;
+  justify-content: center; // Center the pill container
+}
+
+.pillContainer {
+  display: flex;
+  background-color: $color-neutral-white;
+  border-radius: 50px; // Very rounded ends
+  padding: $spacing-sm;
+  box-shadow: 0 4px 10px rgba($color-neutral-dark, 0.1);
+}
+
+.navItem {
+  padding: $spacing-sm $spacing-lg;
+  text-decoration: none;
+  color: $color-neutral-dark;
+  font-weight: $font-weight-medium;
+  border-radius: 40px; // Rounded corners for each item
+  transition: background-color 0.3s ease, color 0.3s ease;
+  white-space: nowrap; // Keep navigation text on one line
+
+  &:hover {
+    background-color: $color-neutral-light;
+  }
+}
+
+// Active state styling based on your image (light red/pink background)
+.active {
+  background-color: #610202; // Light Red/Pink from the image
+  color: white; // Or maybe a slightly darker color
+  font-weight: $font-weight-bold;
+}
+
+.actionButton {
+  a {
+    display: block;
+    padding: $spacing-md $spacing-xxl;
+    background-color: #610202; // The bright red color from your image
+    color: $color-neutral-white;
+    font-weight: $font-weight-bold;
+    text-decoration: none;
+    border-radius: 40px;
+    transition: background-color 0.3s ease;
+    
+    &:hover {
+      background-color: darken(#610202, 10%);
+      text-decoration: none; // Override base link underline
+    }
+  }
+}
