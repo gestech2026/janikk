@@ -1,5 +1,3 @@
-
-// src/App.jsx
 import {
   BrowserRouter as Router,
   Routes,
@@ -38,7 +36,30 @@ function App() {
     // Use Router once at the top level
     <Router>
       <Routes>
-    
+        {/*
+          The GlobalLayout component acts as a parent for all routes,
+          ensuring the Header and Footer are displayed on every page.
+        */}
+        <Route path="/" element={<GlobalLayout />}>
+          {/* Define your page routes as children */}
+          <Route index element={<GESPage />} />{" "}
+          {/* index renders at the parent path "/" */}
+          <Route path="about" element={<AboutUsPage />} />
+          <Route path="contact" element={<ContactUsPage />} />
+          <Route path="ges" element={<GESPage />} />
+          <Route path="immersion" element={<ImmersionProgrammePage />} />
+          <Route path="gallery" element={<GalleryPage />} />
+          {/* Fallback route for 404 - Optional but recommended */}
+          <Route
+            path="*"
+            element={
+              <div style={{ padding: "40px", textAlign: "center" }}>
+                <h2>404 - Page Not Found</h2>
+                <p>The page you are looking for does not exist.</p>
+              </div>
+            }
+          />
+        </Route>
       </Routes>
     </Router>
   );
