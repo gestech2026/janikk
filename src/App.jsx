@@ -21,7 +21,7 @@ import GalleryPage from "./pages/GalleryPage.jsx";
 const GlobalLayout = () => {
   return (
     <>
-      <Header />
+      {/* <Header /> */}
       <main style={{ minHeight: "100dvh" }}>
         {/* The Outlet renders the currently matched child Route element */}
         <Outlet />
