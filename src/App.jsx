@@ -16,6 +16,7 @@ import ContactUsPage from "./pages/ContactUsPage.jsx";
 import GESPage from "./pages/GESPage.jsx";
 import ImmersionProgrammePage from "./pages/ImmersionProgrammePage.jsx";
 import GalleryPage from "./pages/GalleryPage.jsx";
+import ScrollToTop from "./ScrollToTop.jsx";
 
 // A Layout component to wrap pages with the Header and Footer
 const GlobalLayout = () => {
@@ -35,6 +36,7 @@ function App() {
   return (
     // Use Router once at the top level
     <Router>
+      <ScrollToTop />
       <Routes>
         {/*
           The GlobalLayout component acts as a parent for all routes,
