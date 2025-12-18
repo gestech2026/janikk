@@ -44,7 +44,7 @@ function App() {
         */}
         <Route path="/" element={<GlobalLayout />}>
           {/* Define your page routes as children */}
-          <Route index element={<GESPage />} />{" "}
+          <Route index element={<HomePage />} />{" "}
           {/* index renders at the parent path "/" */}
           <Route path="about" element={<AboutUsPage />} />
           <Route path="contact" element={<ContactUsPage />} />

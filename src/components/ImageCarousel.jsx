@@ -4,7 +4,7 @@ import styles from "./ImageCarousel.module.scss";
 import ImageModal from "./ImageModal";
 import { IoArrowBack, IoArrowForward } from "react-icons/io5";
 
-const ImageCarousel = ({ images }) => {
+const ImageCarousel = ({ images, text }) => {
   const [emblaRef, emblaApi] = useEmblaCarousel({
     align: "start",
     dragFree: true,
@@ -26,7 +26,7 @@ const ImageCarousel = ({ images }) => {
     <>
       <div className={styles.wrapper}>
         <div className={styles.header}>
-          <h2>3D Mockup Designs</h2>
+          <h2>{text}</h2>
 
           <div className={styles.arrows}>
             <button onClick={scrollPrev}>

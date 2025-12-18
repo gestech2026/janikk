@@ -325,7 +325,7 @@ export default function GESPage() {
           <img className={styles.floortImage} src={map2} alt="" />
         </section>
         <section id="gallary" className={styles.gallarySection}>
-          <ImageCarousel images={images} />
+          <ImageCarousel images={images} text={"3D Mockup Designs"} />
         </section>
         <section className={styles.feesSection}>
           <h2 className={styles.title}>Participation Fees</h2>
