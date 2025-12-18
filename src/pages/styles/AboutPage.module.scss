@@ -1,0 +1,142 @@
+@import "../../variables";
+@import "../../mixins";
+
+/* ------------------------------
+   SECTION
+--------------------------------*/
+
+.HeroSection {
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  @include media("lg", "down") {
+    height: auto;
+  }
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 10% 30%;
+  }
+}
+.section {
+  padding: $spacing-xxl 0;
+  background: $color-background-white;
+
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ------------------------------
+   TOP LAYOUT
+--------------------------------*/
+.top {
+  max-width: 1200px;
+  margin: 0 auto $spacing-xxl;
+  padding: 0 $spacing-lg;
+
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: $spacing-xxl;
+
+  @include media("md", "down") {
+    grid-template-columns: 1fr;
+  }
+}
+
+.left {
+  .kicker {
+    font-size: $font-size-small;
+    color: $color-text-light;
+    margin-bottom: $spacing-sm;
+    display: inline-block;
+  }
+
+  h2 {
+    font-size: $font-size-h1;
+    font-weight: $font-weight-bold;
+    color: $color-text-dark;
+    margin-bottom: $spacing-sm;
+
+    @include media("md", "down") {
+      font-size: $font-size-h2;
+    }
+  }
+
+  .role {
+    font-size: $font-size-small;
+    font-weight: $font-weight-medium;
+    color: $color-text-light;
+  }
+}
+
+.right {
+  p {
+    font-size: $font-size-base;
+    color: $color-text-body;
+    line-height: 1.6;
+    margin-bottom: $spacing-md;
+  }
+}
+
+/* ------------------------------
+   CARD
+--------------------------------*/
+.card {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: $spacing-xxl;
+  background: $color-brand-primary-03;
+  border-radius: 28px;
+
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: $spacing-xxl;
+
+  @include media("md", "down") {
+    grid-template-columns: 1fr;
+    padding: $spacing-xl;
+  }
+}
+
+.imageBox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.imageBox img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 18px;
+  object-position: 100% 100%;
+}
+
+.imagePlaceholder {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  background: $color-neutral-white;
+  border-radius: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: $color-text-light;
+  font-size: $font-size-small;
+  box-shadow: $box-shadow-base;
+}
+
+.cardContent {
+  p {
+    font-size: $font-size-base;
+    color: $color-text-body;
+    line-height: 1.6;
+    margin-bottom: $spacing-md;
+  }
+}

@@ -1,0 +1,136 @@
+@import "../../variables";
+@import "../../mixins";
+
+.ContactUsPage {
+  background: #f7f9fc;
+  padding: 120px 0;
+  min-height: 100vh;
+  @include media("lg", "down") {
+    min-height: 0;
+  }
+}
+
+.container {
+  max-width: 1200px;
+  margin: auto;
+  padding: 0 24px;
+
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 48px;
+  justify-content: center;
+  @include media("md", "down") {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* FORM */
+.formCard {
+  background: $color-background-white;
+  padding: 42px 36px;
+  border-radius: 20px;
+  box-shadow: $box-shadow-base;
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+
+  h1 {
+    font-size: 32px;
+    margin-bottom: 12px;
+  }
+}
+
+.kicker {
+  color: orange;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.subtitle {
+  color: $color-text-light;
+  margin-bottom: 50px;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+
+  @include media("sm", "down") {
+    grid-template-columns: 1fr;
+  }
+}
+
+input,
+textarea {
+  width: 100%;
+  padding: 14px 16px;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+  margin-bottom: 16px;
+  font-family: inherit;
+
+  &:focus {
+    outline: none;
+    border-color: $color-accent;
+  }
+}
+
+.error {
+  border-color: red;
+}
+
+.checkbox {
+  display: flex;
+  gap: 10px;
+  font-size: 14px;
+  margin-bottom: 24px;
+  width: 100%;
+  input {
+    margin: auto 0;
+    width: 30px;
+  }
+}
+
+button {
+  background: $color-secondary;
+  color: white;
+  padding: 14px;
+  border-radius: 999px;
+  border: none;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+/* RIGHT */
+.rightPanel {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.imageBox {
+  background: #dbe7f7;
+  border-radius: 20px;
+  max-height: 520px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+.contactCard {
+  background: white;
+  padding: 20px;
+  border-radius: 16px;
+  box-shadow: $box-shadow-base;
+
+  div {
+    margin-bottom: 12px;
+  }
+}

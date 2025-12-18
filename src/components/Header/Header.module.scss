@@ -1,39 +1,47 @@
 // src/components/Header/Header.module.scss
-
-// Import variables from your global setup
-@import '../../_variables.scss'; // Adjust path as necessary
+@import "../../variables";
 
 .header {
-  // Use Flexbox to align logo, navigation, and button
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: $spacing-md $spacing-xl; // Use your global spacing variables
-  background-color:transparent; // Assuming white background for header area
-  // box-shadow: 0 2px 4px rgba($color-neutral-dark, 0.05);
-  position: fixed; // Make it sticky on scroll
-  top: 0; width: 100%;
-  z-index: 1000; // High z-index to stay on top
+  padding: $spacing-md $spacing-xl;
+  background-color: transparent;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  box-sizing: border-box;
 }
 
 .logoContainer {
+  position: relative;
+  z-index: 1002;
+
+  a {
+    display: block;
+    text-decoration: none;
+  }
+
   .logo {
-    height: 60px; // Adjust based on the actual logo size
+    height: 60px;
     width: auto;
-    display: block; // Ensures no extra margin below the image
+    display: block;
   }
 }
 
+// Desktop Navigation
 .navMenu {
-  flex-grow: 1; // Allows the navigation to take up available space
+  flex-grow: 1;
   display: flex;
-  justify-content: center; // Center the pill container
+  justify-content: center;
 }
 
 .pillContainer {
   display: flex;
   background-color: $color-neutral-white;
-  border-radius: 50px; // Very rounded ends
+  border-radius: 50px;
   padding: $spacing-sm;
   box-shadow: 0 4px 10px rgba($color-neutral-dark, 0.1);
 }
@@ -43,36 +51,322 @@
   text-decoration: none;
   color: $color-neutral-dark;
   font-weight: $font-weight-medium;
-  border-radius: 40px; // Rounded corners for each item
+  border-radius: 40px;
   transition: background-color 0.3s ease, color 0.3s ease;
-  white-space: nowrap; // Keep navigation text on one line
+  white-space: nowrap;
 
   &:hover {
     background-color: $color-neutral-light;
   }
+
+  &.active {
+    background-color: #610202;
+    color: white;
+    font-weight: $font-weight-bold;
+  }
 }
 
-// Active state styling based on your image (light red/pink background)
-.active {
-  background-color: #610202; // Light Red/Pink from the image
-  color: white; // Or maybe a slightly darker color
-  font-weight: $font-weight-bold;
-}
-
+// Desktop Action Button
 .actionButton {
+  display: block;
+
   a {
     display: block;
     padding: $spacing-md $spacing-xxl;
-    background-color: #610202; // The bright red color from your image
+    background-color: #610202;
     color: $color-neutral-white;
     font-weight: $font-weight-bold;
     text-decoration: none;
     border-radius: 40px;
-    transition: background-color 0.3s ease;
-    
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    white-space: nowrap;
+
     &:hover {
       background-color: darken(#610202, 10%);
-      text-decoration: none; // Override base link underline
+      transform: translateY(-2px);
     }
+  }
+}
+
+// Mobile Menu Toggle Button (Hamburger)
+.menuToggle {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 28px;
+  height: 22px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  position: relative;
+  z-index: 1002;
+
+  span {
+    width: 100%;
+    height: 3px;
+    background-color: #610202;
+    border-radius: 3px;
+    transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+    transform-origin: center;
+  }
+
+  &.open {
+    span:nth-child(1) {
+      transform: translateY(9.5px) rotate(45deg);
+    }
+
+    span:nth-child(2) {
+      opacity: 0;
+      transform: translateX(20px);
+    }
+
+    span:nth-child(3) {
+      transform: translateY(-9.5px) rotate(-45deg);
+    }
+  }
+
+  &:focus {
+    outline: none;
+  }
+
+  &:active {
+    transform: scale(0.95);
+  }
+}
+
+// Mobile Menu Overlay
+.mobileMenuOverlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0);
+  visibility: hidden;
+  transition: background-color 0.3s ease, visibility 0.3s ease;
+  z-index: 998;
+
+  &.showOverlay {
+    background-color: rgba(0, 0, 0, 0.6);
+    visibility: visible;
+  }
+}
+
+// Mobile Menu Slider
+.mobileMenu {
+  display: none;
+  position: fixed;
+  top: 0;
+  right: -100%;
+  width: 85%;
+  max-width: 400px;
+  height: 100vh;
+  height: 100dvh;
+  background-color: $color-neutral-white;
+  box-shadow: -5px 0 25px rgba(0, 0, 0, 0.2);
+  z-index: 999;
+  transition: right 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
+  overflow-y: auto;
+  overflow-x: hidden;
+
+  &.showMenu {
+    right: 0;
+  }
+}
+
+.mobileMenuContent {
+  padding: 90px $spacing-xl $spacing-xl;
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-xs;
+  min-height: 100%;
+}
+
+// Mobile Navigation Items
+.mobileNavItem {
+  padding: $spacing-lg $spacing-md;
+  text-decoration: none;
+  color: $color-neutral-dark;
+  font-weight: $font-weight-medium;
+  font-size: 1.125rem;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+  opacity: 0;
+  transform: translateX(50px);
+  display: block;
+
+  &.animateIn {
+    animation: slideInFromRight 0.5s cubic-bezier(0.645, 0.045, 0.355, 1)
+      forwards;
+  }
+
+  &:hover {
+    background-color: rgba(97, 2, 2, 0.08);
+    transform: translateX(5px);
+  }
+
+  &:active {
+    background-color: rgba(97, 2, 2, 0.15);
+    transform: scale(0.98);
+  }
+
+  &.activeLink {
+    background-color: #610202;
+    color: white;
+    font-weight: $font-weight-bold;
+  }
+}
+
+// Mobile Action Button
+.mobileActionButton {
+  display: block;
+  padding: $spacing-lg $spacing-md;
+  margin-top: $spacing-lg;
+  background-color: #610202;
+  color: $color-neutral-white;
+  font-weight: $font-weight-bold;
+  text-decoration: none;
+  text-align: center;
+  border-radius: 12px;
+  font-size: 1.125rem;
+  transition: all 0.3s ease;
+  opacity: 0;
+  transform: translateX(50px);
+
+  &.animateIn {
+    animation: slideInFromRight 0.5s cubic-bezier(0.645, 0.045, 0.355, 1)
+      forwards;
+  }
+
+  &:hover {
+    background-color: darken(#610202, 10%);
+    transform: translateX(5px) scale(1.02);
+  }
+
+  &:active {
+    transform: translateX(5px) scale(0.98);
+  }
+}
+
+// Slide-in animation keyframes
+@keyframes slideInFromRight {
+  0% {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+// ========================================
+// RESPONSIVE MEDIA QUERIES
+// ========================================
+
+// Tablets and below (992px and down)
+@media (max-width: 992px) {
+  .header {
+    padding: $spacing-md $spacing-lg;
+  }
+
+  .logoContainer .logo {
+    height: 55px;
+  }
+
+  // Hide desktop navigation
+  .navMenu {
+    display: none;
+  }
+
+  .actionButton {
+    display: none;
+  }
+
+  // Show mobile menu toggle
+  .menuToggle {
+    display: flex;
+  }
+
+  // Show mobile menu overlay
+  .mobileMenuOverlay {
+    display: block;
+  }
+
+  // Show mobile menu
+  .mobileMenu {
+    display: block;
+  }
+}
+
+// Mobile devices (768px and down)
+@media (max-width: 768px) {
+  .header {
+    padding: $spacing-sm $spacing-md;
+  }
+
+  .logoContainer .logo {
+    height: 50px;
+  }
+
+  .mobileMenuContent {
+    padding: 80px $spacing-lg $spacing-lg;
+  }
+
+  .mobileMenu {
+    width: 90%;
+  }
+}
+
+// Small mobile devices (576px and down)
+@media (max-width: 576px) {
+  .logoContainer .logo {
+    height: 45px;
+  }
+
+  .mobileMenuContent {
+    padding: 70px $spacing-md $spacing-md;
+    gap: $spacing-xs;
+  }
+
+  .mobileNavItem {
+    font-size: 1rem;
+    padding: $spacing-md $spacing-sm;
+  }
+
+  .mobileActionButton {
+    padding: $spacing-md;
+    font-size: 1rem;
+    margin-top: $spacing-md;
+  }
+
+  .mobileMenu {
+    width: 90%;
+    max-width: 100%;
+  }
+}
+
+// Extra large desktops (1400px and up)
+@media (min-width: 1400px) {
+  .header {
+    padding: $spacing-lg $spacing-xxl;
+  }
+
+  .logoContainer .logo {
+    height: 65px;
+  }
+}
+
+// Large desktops (1200px to 1399px)
+@media (min-width: 1200px) and (max-width: 1399px) {
+  .navItem {
+    padding: $spacing-sm $spacing-md;
+    font-size: 0.95rem;
+  }
+
+  .actionButton a {
+    padding: $spacing-md $spacing-lg;
   }
 }

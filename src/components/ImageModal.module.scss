@@ -6,47 +6,83 @@
   align-items: center;
   justify-content: center;
   z-index: 9999;
-}
 
-img {
-  max-width: 90%;
-  max-height: 90%;
-  border-radius: 10px;
-}
+  img {
+    max-width: 90%;
+    max-height: 90%;
+    border-radius: 10px;
+  }
 
-.close {
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  background: none;
-  border: none;
-  color: white;
-  font-size: 30px;
-  cursor: pointer;
-}
+  .close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 30px;
+    cursor: pointer;
+  }
 
-.prev,
-.next {
-  position: absolute;
-  background: none;
-  border: none;
-  color: white;
-  font-size: 36px;
-  cursor: pointer;
-}
-
-.prev {
-  left: 30px;
-}
-
-.next {
-  right: 30px;
-}
-
-/* Mobile */
-@media (max-width: 640px) {
   .prev,
   .next {
-    font-size: 28px;
+    position: absolute;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 36px;
+    cursor: pointer;
+  }
+
+  .prev {
+    left: 30px;
+  }
+
+  .next {
+    right: 30px;
+  }
+
+  /* Mobile */
+  @media (max-width: 640px) {
+    .prev,
+    .next {
+      font-size: 28px;
+    }
+  }
+}
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.9);
+  backdrop-filter: blur(6px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.overlay img {
+  max-width: 90%;
+  max-height: 85%;
+  border-radius: 12px;
+  animation: scaleIn 0.3s ease;
+}
+
+@keyframes scaleIn {
+  from {
+    transform: scale(0.96);
+  }
+  to {
+    transform: scale(1);
   }
 }

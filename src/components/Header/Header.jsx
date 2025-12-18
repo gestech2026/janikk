@@ -1,7 +1,7 @@
 // src/components/Header/Header.jsx
 import { Link, useLocation } from "react-router-dom";
+import { useState, useEffect } from "react";
 import styles from "./Header.module.scss";
-// Assuming the logo is saved here. Use an <img> tag for the logo.
 import logoImage from "../../assets/logo/logo.png";
 
 const navItems = [
@@ -10,17 +10,37 @@ const navItems = [
   { name: "GES", path: "/ges" },
   { name: "Immersion Programme", path: "/immersion" },
   { name: "Gallery", path: "/gallery" },
-  // { name: 'Contact Us', path: '/contact' },
 ];
 
 const Header = () => {
   const location = useLocation();
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  // Prevent body scroll when menu is open
+  useEffect(() => {
+    if (isMenuOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "unset";
+    }
+    return () => {
+      document.body.style.overflow = "unset";
+    };
+  }, [isMenuOpen]);
+
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
+
+  const closeMenu = () => {
+    setIsMenuOpen(false);
+  };
 
   return (
     <header className={styles.header}>
       {/* 1. Logo Section */}
       <div className={styles.logoContainer}>
-        <Link to="/">
+        <Link to="/" onClick={closeMenu}>
           <img
             src={logoImage}
             alt="JANKK International Logo"
@@ -29,14 +49,13 @@ const Header = () => {
         </Link>
       </div>
 
-      {/* 2. Navigation Menu */}
+      {/* 2. Navigation Menu - Desktop */}
       <nav className={styles.navMenu}>
         <div className={styles.pillContainer}>
           {navItems.map((item) => (
             <Link
               key={item.name}
               to={item.path}
-              // Check if the current path starts with the item's path for active state
               className={`${styles.navItem} ${
                 location.pathname === item.path ||
                 (item.path !== "/" && location.pathname.startsWith(item.path))
@@ -50,10 +69,64 @@ const Header = () => {
         </div>
       </nav>
 
-      {/* 3. Apply Now Button */}
+      {/* 3. Apply Now Button - Desktop */}
       <div className={styles.actionButton}>
         <Link to="/contact">Contact Us</Link>
       </div>
+
+      {/* 4. Mobile Menu Toggle Button */}
+      <button
+        className={`${styles.menuToggle} ${isMenuOpen ? styles.open : ""}`}
+        onClick={toggleMenu}
+        aria-label="Toggle menu"
+        type="button"
+      >
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      {/* 5. Mobile Menu Overlay */}
+      <div
+        className={`${styles.mobileMenuOverlay} ${
+          isMenuOpen ? styles.showOverlay : ""
+        }`}
+        onClick={closeMenu}
+      ></div>
+
+      {/* 6. Mobile Menu Slider */}
+      <nav
+        className={`${styles.mobileMenu} ${isMenuOpen ? styles.showMenu : ""}`}
+      >
+        <div className={styles.mobileMenuContent}>
+          {navItems.map((item, index) => (
+            <Link
+              key={item.name}
+              to={item.path}
+              className={`${styles.mobileNavItem} ${
+                location.pathname === item.path ||
+                (item.path !== "/" && location.pathname.startsWith(item.path))
+                  ? styles.activeLink
+                  : ""
+              } ${isMenuOpen ? styles.animateIn : ""}`}
+              onClick={closeMenu}
+              style={{ animationDelay: `${index * 0.08}s` }}
+            >
+              {item.name}
+            </Link>
+          ))}
+          <Link
+            to="/contact"
+            className={`${styles.mobileActionButton} ${
+              isMenuOpen ? styles.animateIn : ""
+            }`}
+            onClick={closeMenu}
+            style={{ animationDelay: `${navItems.length * 0.08}s` }}
+          >
+            Contact Us
+          </Link>
+        </div>
+      </nav>
     </header>
   );
 };

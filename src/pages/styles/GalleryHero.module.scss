@@ -1,0 +1,232 @@
+@import "../../variables";
+@import "../../mixins";
+.hero {
+  background: linear-gradient(
+    180deg,
+    $color-background-white 0%,
+    $color-background-light 100%
+  );
+  padding: $spacing-xxl 0;
+  overflow: hidden;
+  margin-top: 60px;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 $spacing-lg;
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  align-items: center;
+  gap: $spacing-xxl;
+
+  @include media("md", "down") {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+}
+
+/* ------------------------------
+   TEXT CONTENT
+--------------------------------*/
+.content {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+
+  h1 {
+    font-family: $font-family-primary;
+    font-size: $font-size-h1;
+    font-weight: $font-weight-bold;
+    color: $color-text-dark;
+    margin-bottom: $spacing-md;
+    line-height: 1.15;
+    text-align: justify;
+    @include media("md", "down") {
+      font-size: $font-size-h2;
+    }
+  }
+
+  p {
+    font-size: $font-size-base;
+    color: $color-text-body;
+    max-width: 480px;
+    text-align: justify;
+
+    @include media("md", "down") {
+      margin: 0 auto;
+    }
+  }
+}
+.imagePlaceholder img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: inherit;
+}
+
+.badge {
+  display: inline-block;
+  background: rgba($color-brand-tertiary, 0.1);
+  color: $color-brand-tertiary;
+  font-size: $font-size-small;
+  font-weight: $font-weight-medium;
+  padding: 6px 14px;
+  border-radius: 999px;
+  margin-bottom: $spacing-md;
+}
+
+/* ------------------------------
+   IMAGE
+--------------------------------*/
+.imageWrapper {
+  opacity: 0;
+  transform: translateY(32px) scale(0.96);
+  transition: opacity 1s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 1s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.imagePlaceholder {
+  aspect-ratio: 4 / 3;
+  background: linear-gradient(
+    135deg,
+    $color-brand-primary-03,
+    $color-brand-secondary-03
+  );
+  border-radius: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: $color-text-light;
+  font-size: $font-size-small;
+  box-shadow: $box-shadow-base;
+  will-change: transform;
+}
+
+/* ------------------------------
+   ACTIVE STATE (ON VIEW)
+--------------------------------*/
+.visible {
+  .content {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .imageWrapper {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+// Gallery Section
+
+.gallerySection {
+  background: $color-background-white;
+  padding: $spacing-xxl 0;
+
+  .grid {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 $spacing-lg;
+
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: $spacing-lg;
+
+    @include media("lg", "down") {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    @include media("md", "down") {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @include media("sm", "down") {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  /* ------------------------------
+   IMAGE CARD
+--------------------------------*/
+  .card {
+    position: relative;
+    border-radius: 18px;
+    overflow: hidden;
+    cursor: pointer;
+    background: $color-background-light;
+    box-shadow: $box-shadow-base;
+    transform: translateY(20px);
+    opacity: 0;
+    animation: reveal 0.8s ease forwards;
+
+    &:hover img {
+      transform: scale(1.06);
+    }
+
+    &:hover::after {
+      opacity: 1;
+    }
+
+    &::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, transparent, rgba(0, 0, 0, 0.35));
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+  }
+
+  @keyframes reveal {
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+
+  /* ------------------------------
+   IMAGE
+--------------------------------*/
+  .card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+
+    filter: blur(10px);
+    transform: scale(1);
+    transition: filter 0.6s ease, transform 0.4s ease;
+  }
+
+  .card img.loaded {
+    filter: blur(0);
+  }
+
+  /* ------------------------------
+   LOAD MORE
+--------------------------------*/
+  .loadMore {
+    display: flex;
+    justify-content: center;
+    margin-top: $spacing-xxl;
+
+    button {
+      padding: 14px 32px;
+      border-radius: 999px;
+      font-family: $font-family-primary;
+      font-weight: $font-weight-medium;
+      background: $color-brand-tertiary;
+      color: $color-neutral-white;
+      border: none;
+      cursor: pointer;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+      &:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+      }
+    }
+  }
+}
