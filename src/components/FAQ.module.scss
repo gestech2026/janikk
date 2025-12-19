@@ -1,0 +1,97 @@
+.faqSection {
+  background: #fde7e1;
+  border-radius: 48px;
+  padding: clamp(2rem, 5vw, 4rem);
+  max-width: 1200px;
+  margin: 0 auto;
+
+  h2 {
+    text-align: center;
+    font-size: clamp(1.6rem, 3vw, 2.4rem);
+    font-weight: 700;
+    margin-bottom: 2.5rem;
+  }
+
+  /* ---------- List ---------- */
+  .list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  /* ---------- Item ---------- */
+  .item {
+    background: #e9d3cd;
+    border-radius: 14px;
+    padding: 1.2rem 1.4rem;
+    cursor: pointer;
+    transition: background 0.3s ease;
+
+    &.open {
+      background: #fff2ee;
+    }
+  }
+
+  /* ---------- Question ---------- */
+  .question {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+
+    span {
+      font-weight: 600;
+      font-size: 0.95rem;
+    }
+  }
+
+  /* ---------- Icon ---------- */
+  .iconr {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-width: 30px;
+    height: 30px;
+    background-color: red;
+    padding: 0;
+    cursor: pointer;
+
+    svg {
+      margin: 0;
+      width: 30px;
+      height: 30px;
+    }
+  }
+
+  /* ---------- Answer ---------- */
+  .answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease, opacity 0.3s ease;
+    opacity: 0;
+
+    p {
+      margin-top: 1rem;
+      font-size: 0.9rem;
+      line-height: 1.6;
+      color: #444;
+    }
+  }
+
+  /* ---------- Open State ---------- */
+  .open .answer {
+    max-height: 300px;
+    opacity: 1;
+  }
+
+  /* ---------- Responsive ---------- */
+  @media (max-width: 768px) {
+    .faqSection {
+      border-radius: 24px;
+    }
+
+    .question span {
+      font-size: 0.9rem;
+    }
+  }
+}

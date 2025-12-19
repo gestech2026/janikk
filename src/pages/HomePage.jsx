@@ -11,6 +11,7 @@ import { GiLightBulb } from "react-icons/gi"; // For Mission
 import { FaCog } from "react-icons/fa"; // For Vision
 import GenericCarousel from "../components/GenericCarousel";
 import ImageCarousel from "../components/ImageCarousel";
+import FAQ from "../components/Faq";
 
 const slides = [
   {
@@ -329,6 +330,7 @@ export default function HomePage() {
       <section className={styles.gallarySection}>
         <ImageCarousel images={images} text={"Events Gallery"} />
       </section>
+      <FAQ />
     </div>
   );
 }

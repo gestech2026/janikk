@@ -19,6 +19,7 @@ import GalleryPage from "./pages/GalleryPage.jsx";
 import ScrollToTop from "./ScrollToTop.jsx";
 import StudentRegistration from "./pages/StudentRegistration.jsx";
 import ExibitorsRegistration from "./pages/ExibitorsRegistration.jsx";
+import GWHMPage from "./pages/GWHMPage.jsx";
 
 // A Layout component to wrap pages with the Header and Footer
 const GlobalLayout = () => {
@@ -56,7 +57,7 @@ function App() {
           ExibitorsRegistration.jsx
           <Route path="studentregister" element={<StudentRegistration />} />
           <Route path="exibitorsregister" element={<ExibitorsRegistration />} />
-          {/* <Route path="exibitorsregister" element={<ExibitorsRegistration />} /> */}
+          <Route path="gwhmregister" element={<GWHMPage />} />
           {/* Fallback route for 404 - Optional but recommended */}
           <Route
             path="*"

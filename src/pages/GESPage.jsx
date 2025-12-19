@@ -221,8 +221,8 @@ export default function GESPage() {
             <Link to="/exibitorsregister" className={styles.secondaryBtn}>
               Exhibitor Registration
             </Link>
-            <Link to="/register" className={styles.secondaryBtn}>
-              Edu Run
+            <Link to="/gwhmregister" className={styles.secondaryBtn}>
+              GWHM
             </Link>
           </motion.div>
         </motion.div>
