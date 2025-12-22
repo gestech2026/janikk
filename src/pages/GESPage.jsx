@@ -20,8 +20,8 @@ import img1 from "../assets/images/GES/DesignImg1.png";
 import img2 from "../assets/images/GES/DesignImg2.png";
 import img3 from "../assets/images/GES/DesignImg3.png";
 import img4 from "../assets/images/GES/DesignImg4.jpg";
-import typeAImg from "../assets/images/GES/TypeA.webp";
-import typeBImg from "../assets/images/GES/TypeB.webp";
+import typeAImg from "../assets/images/GES/TypeA.jpg";
+import typeBImg from "../assets/images/GES/TypeB.jpg";
 
 const containerVariants = {
   hidden: {},
