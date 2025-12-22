@@ -109,10 +109,16 @@
 // export default Footer;
 
 import React, { useEffect, useRef, useState } from "react";
-import { useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import styles from "./Footer.module.scss";
 import Logo from "../../assets/logo/logo.svg";
-import { FiPhone, FiMail, FiInstagram, FiFacebook, FiX } from "react-icons/fi";
+import {
+  FiPhone,
+  FiMail,
+  FiInstagram,
+  FiFacebook,
+  FiLinkedin,
+} from "react-icons/fi";
 import design from "../../assets/images/Designn.svg";
 
 const Footer = () => {
@@ -189,14 +195,20 @@ const Footer = () => {
           <h4>Contacts</h4>
 
           <div className={styles.socials}>
-            <a>
+            <a
+              href="https://www.instagram.com/your_instagram_username"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <FiInstagram />
             </a>
-            <a>
-              <FiFacebook />
-            </a>
-            <a>
-              <FiX />
+
+            <a
+              href="https://www.linkedin.com/company/your_company_name"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <FiLinkedin />
             </a>
           </div>
 
