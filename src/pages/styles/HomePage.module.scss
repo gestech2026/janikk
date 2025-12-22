@@ -14,7 +14,7 @@
   overflow: hidden;
   height: 100dvh; // Default height for smaller screens
   @include media("lg", "down") {
-    height: auto;
+    max-height: 40dvh;
   }
   .carouselContainer {
     display: flex;
@@ -41,7 +41,11 @@
     height: 100%;
     object-fit: cover; // Ensures the image covers the entire area without distortion
     display: block;
-    object-position: 10% 30%;
+    object-position: 50% 50%;
+    @include media("md", "down") {
+      object-fit: cover;
+      width: 100%;
+    }
   }
 
   // ------------------------------------
@@ -370,130 +374,132 @@
 // }
 
 .missionSection {
- 
-  padding: clamp(4rem, 8vw, 7rem) 1.5rem;
-  background: #fff8f4;
-
-
-.header {
-  text-align: center;
-  max-width: 900px;
-  margin: 0 auto 3.5rem;
-
-  .kicker {
-    letter-spacing: 0.15em;
-    font-size: 0.7rem;
-    color: #b8a399;
-    display: block;
-    margin-bottom: 0.6rem;
+  padding: clamp(4rem, 4vw, 7rem) 0;
+  background: #fffff4;
+  padding-top: 50px;
+  @include media("md", "down") {
+    padding-top: 30px;
   }
+  .header {
+    text-align: center;
+    max-width: 900px;
+    margin: 0 auto 3.5rem;
 
-  h2 {
-    font-size: clamp(1.8rem, 3.5vw, 2.6rem);
-    font-weight: 500;
-    color: #2b1e1a;
-    line-height: 1.3;
-  }
-}
+    .kicker {
+      letter-spacing: 0.15em;
+      font-size: 0.7rem;
+      color: #b8a399;
+      display: block;
+      margin-bottom: 0.6rem;
+    }
 
-/* ---------- Cards Container ---------- */
-.cards {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 2.5rem;
-  border-radius: 40px;
-  background: rgba(255, 255, 255, 0.6);
-  backdrop-filter: blur(12px);
-
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 2rem;
-
-  @media (max-width: 1024px) {
-    grid-template-columns: 1fr;
-    padding: 2rem;
-  }
-}
-
-/* ---------- Card ---------- */
-.card {
-  background: linear-gradient(
-    180deg,
-    rgba(255, 255, 255, 0.85),
-    rgba(255, 255, 255, 0.65)
-  );
-  border-radius: 22px;
-  padding: 2rem;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.06);
-
-  h3 {
-    font-size: 1.2rem;
-    font-weight: 600;
-    color: #2b1e1a;
-  }
-
-  p {
-    font-size: 0.95rem;
-    line-height: 1.65;
-    color: #5a4a44;
-    margin-top: 0.8rem;
-  }
-
-  ul {
-    margin-top: 1rem;
-    padding-left: 1.2rem;
-
-    li {
-      font-size: 0.9rem;
-      line-height: 1.6;
-      color: #5a4a44;
-      margin-bottom: 0.5rem;
+    h2 {
+      font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+      font-weight: 500;
+      color: #2b1e1a;
+      line-height: 1.3;
     }
   }
-}
 
-/* ---------- Card Header ---------- */
-.cardHeader {
-  display: flex;
-  align-items: center;
-  gap: 0.7rem;
-  margin-bottom: 0.5rem;
+  /* ---------- Cards Container ---------- */
+  .cards {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2.5rem;
+    border-radius: 40px;
+    background: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(12px);
 
-  .icon {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    background: #f3e2d9;
     display: grid;
-    place-items: center;
-    font-size: 1.1rem;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+
+    @media (max-width: 1024px) {
+      grid-template-columns: 1fr;
+      padding: 2rem;
+    }
   }
-}
 
-/* ---------- Values ---------- */
-.values {
-  list-style: none;
-  padding-left: 0;
+  /* ---------- Card ---------- */
+  .card {
+    background: linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.85),
+      rgba(255, 255, 255, 0.65)
+    );
+    border-radius: 22px;
+    padding: 2rem;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.06);
 
-  li {
+    h3 {
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: #2b1e1a;
+    }
+
+    p {
+      font-size: 0.95rem;
+      line-height: 1.65;
+      color: #5a4a44;
+      margin-top: 0.8rem;
+    }
+
+    ul {
+      margin-top: 1rem;
+      padding-left: 1.2rem;
+
+      li {
+        font-size: 0.9rem;
+        line-height: 1.6;
+        color: #5a4a44;
+        margin-bottom: 0.5rem;
+        list-style: none;
+      }
+    }
+  }
+
+  /* ---------- Card Header ---------- */
+  .cardHeader {
     display: flex;
     align-items: center;
-    gap: 0.6rem;
-    font-size: 0.95rem;
+    gap: 0.7rem;
+    margin-bottom: 0.5rem;
 
-    &::before {
-      content: "✓";
-      color: #9c6b55;
-      font-weight: bold;
+    .icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: #f3e2d9;
+      display: grid;
+      place-items: center;
+      font-size: 1.1rem;
     }
   }
-}
- 
+
+  /* ---------- Values ---------- */
+  .values {
+    list-style: none;
+    padding-left: 0;
+
+    li {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-size: 0.95rem;
+
+      &::before {
+        content: "✓";
+        color: #9c6b55;
+        font-weight: bold;
+      }
+    }
+  }
 }
 //immersion section
 .immersionSection {
   padding: clamp(3rem, 6vw, 6rem) $spacing-md;
   padding-bottom: 20px;
+  padding-top: 0;
   @include media("lg", "down") {
     padding: 0;
   }

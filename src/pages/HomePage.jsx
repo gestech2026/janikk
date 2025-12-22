@@ -31,6 +31,12 @@ import img5_jpg from "../assets/images/Gallary/img (5).jpg";
 import img5_jpeg from "../assets/images/Gallary/img (5).jpeg";
 const slides = [
   {
+    id: 1,
+    imageUrl: img1,
+    title: "Innovative Learning",
+    caption: "Driving technological advancement in every curriculum.",
+  },
+  {
     id: 2,
     imageUrl: carouselImage,
     title: "Empowering Future Leaders",
@@ -48,12 +54,7 @@ const slides = [
     title: "Immersion Programme Excellence",
     caption: "Hands-on cultural and academic experiences worldwide.",
   },
-  {
-    id: 1,
-    imageUrl: img1,
-    title: "Innovative Learning",
-    caption: "Driving technological advancement in every curriculum.",
-  },
+
   {
     id: 5,
     imageUrl: carouselImage4,
@@ -471,7 +472,9 @@ export default function HomePage() {
                 tour.
               </p>
 
-              <button className={styles.cta}>Know More</button>
+              <Link to={"/immersion"} className={styles.cta}>
+                Know More
+              </Link>
             </motion.div>
           </div>
 
