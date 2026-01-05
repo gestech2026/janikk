@@ -141,7 +141,7 @@ const GWHMPage = () => {
     },
     card: {
       paddingTop: "30px",
-      marginTop: "120px",
+      marginTop: "100px",
       background: "#fff",
       width: "100%",
       maxWidth: "820px",
