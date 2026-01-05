@@ -1,0 +1,270 @@
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  padding: 20px;
+}
+
+.popup {
+  background: white;
+  border-radius: 12px;
+  max-width: 95vw;
+  max-height: 95vh;
+  width: 1400px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 30px;
+  border-bottom: 2px solid #e0e0e0;
+}
+
+.header h2 {
+  margin: 0;
+  font-size: 24px;
+  color: #333;
+}
+
+.closeBtn {
+  background: none;
+  border: none;
+  font-size: 32px;
+  cursor: pointer;
+  color: #666;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+}
+
+.closeBtn:hover {
+  background-color: #f0f0f0;
+  color: #333;
+}
+
+.mapContainer {
+  flex: 1;
+  overflow: auto;
+  padding: 20px;
+  background: #fafafa;
+}
+
+.mapSvg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.stall {
+  stroke: #333;
+  stroke-width: 2;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.largeStall {
+  fill: #e8f4f8;
+}
+
+.smallStall {
+  fill: #fff4e6;
+}
+
+.stall:hover {
+  fill: #4caf50;
+  stroke: #2e7d32;
+  stroke-width: 3;
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
+}
+
+.stall.selected {
+  fill: #2196f3;
+  stroke: #1565c0;
+  stroke-width: 3;
+}
+
+.stall.selected:hover {
+  fill: #1976d2;
+}
+
+.stallText {
+  font-size: 16px;
+  font-weight: 600;
+  text-anchor: middle;
+  fill: #333;
+  pointer-events: none;
+  user-select: none;
+}
+
+.stallTextSmall {
+  font-size: 11px;
+  text-anchor: middle;
+  fill: #666;
+  pointer-events: none;
+  user-select: none;
+}
+
+.stallTextTiny {
+  font-size: 9px;
+  text-anchor: middle;
+  fill: #999;
+  pointer-events: none;
+  user-select: none;
+}
+
+.labelText {
+  font-size: 14px;
+  fill: #333;
+  text-anchor: middle;
+  pointer-events: none;
+}
+
+.labelSmall {
+  font-size: 12px;
+  fill: #d32f2f;
+  font-weight: 600;
+  text-anchor: middle;
+  pointer-events: none;
+}
+
+.exitText {
+  font-size: 14px;
+  fill: #d32f2f;
+  font-weight: 700;
+  text-anchor: middle;
+  pointer-events: none;
+}
+
+.footer {
+  padding: 20px 30px;
+  border-top: 2px solid #e0e0e0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: white;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.selectedInfo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 16px;
+  color: #333;
+}
+
+.count {
+  background: #2196f3;
+  color: white;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-weight: 600;
+}
+
+.selectedList {
+  color: #666;
+  font-size: 14px;
+}
+
+.bookBtn {
+  background: #4caf50;
+  color: white;
+  border: none;
+  padding: 12px 30px;
+  border-radius: 6px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.bookBtn:hover {
+  background: #45a049;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(76, 175, 80, 0.4);
+}
+
+.bookBtn:active {
+  transform: translateY(0);
+}
+
+@media (max-width: 1200px) {
+  .popup {
+    width: 100%;
+  }
+
+  .header h2 {
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .overlay {
+    padding: 10px;
+  }
+
+  .popup {
+    max-height: 90vh;
+  }
+
+  .header {
+    padding: 15px 20px;
+  }
+
+  .header h2 {
+    font-size: 18px;
+  }
+
+  .mapContainer {
+    padding: 10px;
+  }
+
+  .footer {
+    padding: 15px 20px;
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .bookBtn {
+    width: 100%;
+  }
+
+  .selectedList {
+    display: block;
+    margin-top: 5px;
+  }
+}
+
+@media (max-width: 480px) {
+  .header h2 {
+    font-size: 16px;
+  }
+
+  .closeBtn {
+    font-size: 28px;
+    width: 36px;
+    height: 36px;
+  }
+
+  .selectedInfo {
+    font-size: 14px;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}

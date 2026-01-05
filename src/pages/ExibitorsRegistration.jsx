@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styles from "./styles/StudentRegistration.module.scss";
-
+import StallBooking from "../components/StallBooking";
 const ExhibitorsRegistration = () => {
   const [form, setForm] = useState({
     name: "",
@@ -12,7 +12,7 @@ const ExhibitorsRegistration = () => {
   });
 
   const [errors, setErrors] = useState({});
-
+  const [showStallBook, setShowStallBook] = useState(false);
   const validate = () => {
     const newErrors = {};
 
@@ -73,11 +73,15 @@ const ExhibitorsRegistration = () => {
 
         {/* Description */}
         <p className={styles.description}>
-          Register as an exhibitor for GES 2026. Share your institution,
-          organization, or company with educators, students, and global leaders.
+          Register as an University/ Institute for GES 2026. Share your
+          institution, organization, or company with educators, students, and
+          global leaders.
         </p>
 
-        <div className={styles.sectionTitle}>Exhibitor Details:</div>
+        <div className={styles.sectionTitle}>
+          {" "}
+          University/Institute Details:
+        </div>
 
         {/* Form Fields */}
         <div className={styles.grid}>
@@ -165,6 +169,11 @@ const ExhibitorsRegistration = () => {
         </div>
 
         {/* Submit */}
+        <button type="button" onClick={() => setShowStallBook(true)}>
+          Book Stall
+        </button>
+        {showStallBook && <StallBooking />}
+
         <button type="submit" className={styles.submitBtn}>
           Register
         </button>

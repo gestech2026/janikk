@@ -199,7 +199,7 @@ const Header = () => {
       <div className={styles.logoContainer}>
         <Link to="/" onClick={closeMenu}>
           <img
-            key={location.pathname} // 🔥 THIS IS IMPORTANT
+            key={location.pathname}
             src={isGESPage ? GESLogo : logoImage}
             alt={isGESPage ? "GES Logo" : "Janikk International Logo"}
             className={styles.logo}
@@ -231,9 +231,11 @@ const Header = () => {
       <div className={styles.actionButton}>
         <Link to="/contact">Contact Us</Link>
       </div>
-
+      <div className={styles.actionButtonMob}>
+        <Link to="/ges">GES</Link>
+      </div>
       {/* 4. Mobile Menu Toggle */}
-      <button
+      {/* <button
         className={`${styles.menuToggle} ${isMenuOpen ? styles.open : ""}`}
         onClick={toggleMenu}
         aria-label="Toggle menu"
@@ -242,8 +244,17 @@ const Header = () => {
         <span />
         <span />
         <span />
+      </button> */}
+      <button
+        className={`${styles.menuToggle1} ${isMenuOpen ? styles.open : ""}`}
+        onClick={toggleMenu}
+        aria-label="Toggle menu"
+        type="button"
+      >
+        <span className="styles.span" />
+        <span className="styles.span" />
+        <span className="styles.span" />
       </button>
-
       {/* 5. Mobile Overlay */}
       <div
         className={`${styles.mobileMenuOverlay} ${
@@ -257,6 +268,16 @@ const Header = () => {
         className={`${styles.mobileMenu} ${isMenuOpen ? styles.showMenu : ""}`}
       >
         <div className={styles.mobileMenuContent}>
+          <button
+            className={`${styles.menuToggle1} ${isMenuOpen ? styles.open : ""}`}
+            onClick={toggleMenu}
+            aria-label="Toggle menu"
+            type="button"
+          >
+            <span className="styles.span" />
+            <span className="styles.span" />
+            <span className="styles.span" />
+          </button>
           {navItems.map((item, index) => (
             <Link
               key={item.name}

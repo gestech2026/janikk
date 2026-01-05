@@ -221,7 +221,7 @@ export default function GESPage() {
               Student Registration
             </Link>
             <Link to="/exibitorsregister" className={styles.secondaryBtn}>
-              Exhibitor Registration
+              University/ Institute Registration
             </Link>
             <Link to="/gwhmregister" className={styles.secondaryBtn}>
               GWHM

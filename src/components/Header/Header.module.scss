@@ -14,11 +14,12 @@
   width: 100%;
   z-index: 1000;
   box-sizing: border-box;
+  isolation: isolate;
 }
 
 .logoContainer {
   position: relative;
-  z-index: 1002;
+  z-index: 1;
 
   a {
     display: block;
@@ -31,6 +32,8 @@
     height: 90px;
     width: auto;
     display: block;
+    padding: 5px;
+    background-color: white;
   }
 }
 
@@ -92,7 +95,8 @@
 }
 
 // Mobile Menu Toggle Button (Hamburger)
-.menuToggle {
+
+.menuToggle1 {
   display: none;
   flex-direction: column;
   justify-content: space-between;
@@ -102,8 +106,15 @@
   border: none;
   cursor: pointer;
   padding: 0;
-  position: relative;
-  z-index: 1002;
+  position: relative; // Changed from relative to ensure proper stacking
+  z-index: 10;
+  // margin-left: auto; // This pushes it to the right
+  flex-shrink: 0; // Prevent it from shrinking
+
+  @include media("lg", "down") {
+    display: flex !important;
+    // background-color: red;
+  }
 
   span {
     width: 100%;
@@ -145,7 +156,7 @@
   top: 0;
   left: 0;
   width: 100%;
-  height: 100%;
+  height: 100dvh;
   background-color: rgba(0, 0, 0, 0);
   visibility: hidden;
   transition: background-color 0.3s ease, visibility 0.3s ease;
@@ -180,11 +191,14 @@
 }
 
 .mobileMenuContent {
-  padding: 90px $spacing-xl $spacing-xl;
+  padding: 30px $spacing-xl $spacing-xl;
   display: flex;
   flex-direction: column;
   gap: $spacing-xs;
   min-height: 100%;
+  .menuToggle1 {
+    margin-left: auto;
+  }
 }
 
 // Mobile Navigation Items
@@ -289,8 +303,8 @@
   }
 
   // Show mobile menu toggle
-  .menuToggle {
-    display: flex;
+  .menuToggle1 {
+    // display: flex;
   }
 
   // Show mobile menu overlay
@@ -304,52 +318,37 @@
   }
 }
 
-// Mobile devices (768px and down)
-@media (max-width: 768px) {
-  .header {
-    padding: $spacing-sm $spacing-md;
-  }
+// @media (max-width: 768px) {
+//   .header {
+//     align-items: center;
+//     min-height: 64px;
+//     display: flex; // Ensure flex display
+//     justify-content: space-between; // Better spacing
+//     padding: 0 $spacing-md;
+//     gap: $spacing-sm; // Add gap between items
+//   }
 
-  .logoContainer .logo {
-    height: 50px;
-  }
+//   .logoContainer {
+//     flex-shrink: 1; // Allow logo to shrink if needed
+//     max-width: calc(100% - 60px);
 
-  .mobileMenuContent {
-    padding: 80px $spacing-lg $spacing-lg;
-  }
+//     .logo {
+//       height: 50px;
+//     }
+//   }
+// }
 
-  .mobileMenu {
-    width: 90%;
-  }
-}
+// @media (max-width: 576px) {
+//   .header {
+//     padding: 0 $spacing-sm;
+//   }
 
-// Small mobile devices (576px and down)
-@media (max-width: 576px) {
-  .logoContainer .logo {
-    height: 45px;
-  }
-
-  .mobileMenuContent {
-    padding: 70px $spacing-md $spacing-md;
-    gap: $spacing-xs;
-  }
-
-  .mobileNavItem {
-    font-size: 1rem;
-    padding: $spacing-md $spacing-sm;
-  }
-
-  .mobileActionButton {
-    padding: $spacing-md;
-    font-size: 1rem;
-    margin-top: $spacing-md;
-  }
-
-  .mobileMenu {
-    width: 90%;
-    max-width: 100%;
-  }
-}
+//   .logoContainer {
+//     .logo {
+//       height: 38px;
+//     }
+//   }
+// }
 
 // Extra large desktops (1400px and up)
 @media (min-width: 1400px) {
@@ -375,11 +374,11 @@
 }
 
 .header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  z-index: 1000;
+  // position: fixed;
+  // top: 0;
+  // left: 0;
+  // width: 100%;
+  // z-index: 1000;
 
   transition: transform 0.35s ease, opacity 0.25s ease;
   will-change: transform, opacity;
@@ -400,5 +399,57 @@
     transform: none;
     opacity: 1;
     pointer-events: auto;
+  }
+}
+@media (max-width: 768px) {
+  .header {
+    // background-color: #ffffff;
+    height: 64px;
+    padding: 0 $spacing-md;
+  }
+}
+// .menuToggle1 {
+//   margin-left: auto; // 👈 PUSHES IT TO RIGHT
+//   align-self: center;
+// }
+// @media (max-width: 576px) {
+//   .menuToggle1 span {
+//     background-color: #610202;
+//   }
+// }
+.mobileMenuOverlay {
+  pointer-events: none;
+}
+
+.mobileMenuOverlay.showOverlay {
+  pointer-events: auto;
+}
+
+.actionButtonMob {
+  margin-left: auto; // This pushes it to the right
+  display: none;
+  @include media("lg", "down") {
+    display: block;
+  }
+
+  a {
+    margin-right: 20px;
+    display: block;
+    padding: 10px 30px;
+    background-color: #610202;
+    color: $color-neutral-white;
+    font-weight: $font-weight-bold;
+    text-decoration: none;
+    border-radius: 40px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    white-space: nowrap;
+
+    &:hover {
+      background-color: darken(#da0b0b, 10%);
+      transform: translateY(-2px);
+    }
+    @include media("md", "down") {
+      padding: 7px 20px;
+    }
   }
 }

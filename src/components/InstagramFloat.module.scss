@@ -33,25 +33,25 @@
   &:hover {
     right: 0;
   }
-}
 
-.open {
-  right: 0;
-}
-
-/* 📱 Mobile & Tablet */
-@media (max-width: 768px) {
-  span {
-    display: none;
+  .open {
+    right: 0;
   }
-  .instagram {
-    bottom: 16px;
-    right: -60px;
-    padding: 10px 14px;
-    font-size: 14px;
 
-    svg {
-      font-size: 20px;
+  /* 📱 Mobile & Tablet */
+  @media (max-width: 768px) {
+    span {
+      display: none;
+    }
+    .instagram {
+      bottom: 16px;
+      right: -60px;
+      padding: 10px 14px;
+      font-size: 14px;
+
+      svg {
+        font-size: 20px;
+      }
     }
   }
 }
