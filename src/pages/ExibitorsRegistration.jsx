@@ -3,17 +3,24 @@ import styles from "./styles/StudentRegistration.module.scss";
 
 const ExhibitorsRegistration = () => {
   useEffect(() => {
-    // Dreamcast iframe auto-resize script
+    // Iframe resize script
     const iframeScript = document.createElement("script");
     iframeScript.src =
       "https://cdn1.godcstatic.com/diy_registration/diy-iframe.min.js";
     iframeScript.async = true;
 
-    // Badge button script
+    // Badge script
     const badgeScript = document.createElement("script");
     badgeScript.src =
       "https://cdn1.godcstatic.com/diy_registration_staging/preview.js";
     badgeScript.async = true;
+
+    badgeScript.onload = () => {
+      // 🔥 IMPORTANT: reinitialize Dreamcast buttons
+      if (window.initMBadgeButtons) {
+        window.initMBadgeButtons();
+      }
+    };
 
     document.body.appendChild(iframeScript);
     document.body.appendChild(badgeScript);
@@ -44,7 +51,7 @@ const ExhibitorsRegistration = () => {
           global leaders.
         </p>
 
-        {/* Dreamcast Exhibitor Registration Iframe */}
+        {/* Dreamcast Iframe */}
         <iframe
           id="childIframe"
           title="Dreamcast Exhibitor Registration"
@@ -52,20 +59,17 @@ const ExhibitorsRegistration = () => {
           src="https://event.godreamcast.com/reg-events/gjdhsp-global-education-summit/gjdoy4?isPvt=1&embed=true&page=embed"
           width="100%"
           frameBorder="0"
-          style={{
-            borderRadius: "10px",
-            minHeight: "400px",
-          }}
+          style={{ borderRadius: "10px", minHeight: "400px" }}
         />
 
-        {/* Download Badge Button */}
+        {/* M-Badge Button */}
         <div style={{ marginTop: "24px", textAlign: "center" }}>
           <button
             data-action-id="mbadge-button"
             mbadge-data-url="https://event.godreamcast.com/reg-events/download-badge/gjdhsp-global-education-summit?embed=true"
             className={styles.submitBtn}
           >
-            Download your badge
+            Download your M-badge
           </button>
         </div>
       </div>

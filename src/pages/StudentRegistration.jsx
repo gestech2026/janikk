@@ -15,6 +15,13 @@ const StudentRegistration = () => {
       "https://cdn1.godcstatic.com/diy_registration_staging/preview.js";
     badgeScript.async = true;
 
+    badgeScript.onload = () => {
+      // 🔥 Re-initialize Dreamcast M-badge buttons
+      if (window.initMBadgeButtons) {
+        window.initMBadgeButtons();
+      }
+    };
+
     document.body.appendChild(iframeScript);
     document.body.appendChild(badgeScript);
 
@@ -58,14 +65,14 @@ const StudentRegistration = () => {
           }}
         />
 
-        {/* Download Badge Button */}
+        {/* Download M-Badge Button */}
         <div style={{ marginTop: "24px", textAlign: "center" }}>
           <button
             data-action-id="mbadge-button"
             mbadge-data-url="https://event.godreamcast.com/reg-events/download-badge/gjdhsp-global-education-summit?embed=true"
             className={styles.submitBtn}
           >
-            Download your badge
+            Download your M-badge
           </button>
         </div>
       </div>
