@@ -1,136 +1,74 @@
-import React, { useState } from "react";
+import React, { useEffect } from "react";
 import styles from "./styles/StudentRegistration.module.scss";
 
 const StudentRegistration = () => {
-  const [form, setForm] = useState({
-    firstName: "",
-    lastName: "",
-    email: "",
-    contact: "",
-  });
+  useEffect(() => {
+    // Dreamcast iframe auto-resize script
+    const iframeScript = document.createElement("script");
+    iframeScript.src =
+      "https://cdn1.godcstatic.com/diy_registration/diy-iframe.min.js";
+    iframeScript.async = true;
 
-  const [errors, setErrors] = useState({});
+    // Badge button script
+    const badgeScript = document.createElement("script");
+    badgeScript.src =
+      "https://cdn1.godcstatic.com/diy_registration_staging/preview.js";
+    badgeScript.async = true;
 
-  const validate = () => {
-    const newErrors = {};
+    document.body.appendChild(iframeScript);
+    document.body.appendChild(badgeScript);
 
-    if (!form.firstName.trim()) {
-      newErrors.firstName = "First name is required";
-    }
-
-    if (!form.lastName.trim()) {
-      newErrors.lastName = "Last name is required";
-    }
-
-    if (!form.email) {
-      newErrors.email = "Email is required";
-    } else if (!/^\S+@\S+\.\S+$/.test(form.email)) {
-      newErrors.email = "Enter a valid email";
-    }
-
-    if (!form.contact) {
-      newErrors.contact = "Contact number is required";
-    } else if (!/^[0-9]{10}$/.test(form.contact)) {
-      newErrors.contact = "Enter valid 10-digit number";
-    }
-
-    setErrors(newErrors);
-    return Object.keys(newErrors).length === 0;
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (!validate()) return;
-
-    console.log("Form Submitted:", form);
-    alert("Registration Successful");
-  };
-
-  const handleChange = (e) => {
-    setForm({ ...form, [e.target.name]: e.target.value });
-    setErrors({ ...errors, [e.target.name]: "" });
-  };
+    return () => {
+      if (document.body.contains(iframeScript)) {
+        document.body.removeChild(iframeScript);
+      }
+      if (document.body.contains(badgeScript)) {
+        document.body.removeChild(badgeScript);
+      }
+    };
+  }, []);
 
   return (
     <div className={styles.overlay}>
-      <form className={styles.card} onSubmit={handleSubmit} noValidate>
+      <div className={styles.card}>
+        {/* Header */}
         <div className={styles.header}>
           <span>Contact Us Register for</span>
           <h1>Global Education Summit 2026</h1>
         </div>
 
+        {/* Description */}
         <p className={styles.description}>
-          GES 2026 is a landmark event shaping the future of Indian academia at
-          a global level. The summit gathers policymakers, educators,
-          researchers, and industry leaders.
+          GES 2026 is a landmark event shaping the future of Indian academia at a
+          global level. The summit gathers policymakers, educators, researchers,
+          and industry leaders.
         </p>
 
-        <div className={styles.formId}>Frame 1984084332</div>
+        {/* Dreamcast Registration Iframe */}
+        <iframe
+          id="childIframe"
+          title="Dreamcast Registration"
+          allow="camera; microphone"
+          src="https://event.godreamcast.com/reg-events/gjdhsp-global-education-summit/gjdoz1?isPvt=1&embed=true&page=embed"
+          width="100%"
+          frameBorder="0"
+          style={{
+            borderRadius: "10px",
+            minHeight: "400px",
+          }}
+        />
 
-        <div className={styles.sectionTitle}>Student Details:</div>
-
-        <div className={styles.grid}>
-          <div className={styles.field}>
-            <label>First Name *</label>
-            <input
-              type="text"
-              name="firstName"
-              placeholder="Enter first name"
-              value={form.firstName}
-              onChange={handleChange}
-            />
-            {errors.firstName && (
-              <span className={styles.error}>{errors.firstName}</span>
-            )}
-          </div>
-
-          <div className={styles.field}>
-            <label>Last Name *</label>
-            <input
-              type="text"
-              name="lastName"
-              placeholder="Enter last name"
-              value={form.lastName}
-              onChange={handleChange}
-            />
-            {errors.lastName && (
-              <span className={styles.error}>{errors.lastName}</span>
-            )}
-          </div>
-
-          <div className={styles.field}>
-            <label>E-mail Address *</label>
-            <input
-              type="email"
-              name="email"
-              placeholder="Enter email address"
-              value={form.email}
-              onChange={handleChange}
-            />
-            {errors.email && (
-              <span className={styles.error}>{errors.email}</span>
-            )}
-          </div>
-
-          <div className={styles.field}>
-            <label>Contact Number *</label>
-            <input
-              type="tel"
-              name="contact"
-              placeholder="Enter contact number"
-              value={form.contact}
-              onChange={handleChange}
-            />
-            {errors.contact && (
-              <span className={styles.error}>{errors.contact}</span>
-            )}
-          </div>
+        {/* Download Badge Button */}
+        <div style={{ marginTop: "24px", textAlign: "center" }}>
+          <button
+            data-action-id="mbadge-button"
+            mbadge-data-url="https://event.godreamcast.com/reg-events/download-badge/gjdhsp-global-education-summit?embed=true"
+            className={styles.submitBtn}
+          >
+            Download your badge
+          </button>
         </div>
-
-        <button type="submit" className={styles.submitBtn}>
-          Register
-        </button>
-      </form>
+      </div>
     </div>
   );
 };
