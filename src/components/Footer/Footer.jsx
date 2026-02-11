@@ -235,7 +235,7 @@ const Footer = () => {
           ©2026 All rights reserved by <strong>Janikk International</strong>
         </span>
         <span>
-          Maintained by <strong>Haraay Design Studio</strong>
+          Maintained by <strong>Janikk International</strong>
         </span>
       </div>
     </footer>
