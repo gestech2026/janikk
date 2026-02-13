@@ -19,7 +19,7 @@ const calculateTimeLeft = (targetDate) => {
 const pad = (n) => String(n).padStart(2, "0");
 
 export default function Count({
-  target = "2026-03-13T00:00:00",
+  target = "2026-03-27T00:00:00",
   showLabels = true,
 }) {
   // Memoize the date object so the useEffect dependency is stable

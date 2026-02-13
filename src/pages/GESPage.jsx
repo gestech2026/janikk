@@ -163,7 +163,7 @@ export default function GESPage() {
                 </svg>
               </motion.span>
               <p className={styles.label}>Date</p>
-              <h5>13th – 15th March 2026</h5>
+              <h5>27th – 29th March 2026</h5>
             </motion.div>
 
             <motion.div variants={cardVariants} className={styles.card}>
