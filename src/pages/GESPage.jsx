@@ -391,9 +391,9 @@ export default function GESPage() {
             <div className={styles.infoItem}>
               <FiPhone />
               <span>
-                <a href="tel:+918459865102">+91 84598 65102</a>
+                <a href="tel:+919021296895">+91 90212 96895</a>
                 <span className={styles.divider}>|</span>
-                <a href="tel:+918698476373">+91 86984 76373</a>
+                <a href="tel:+918459865102">+91 84598 65102</a>
               </span>
             </div>
 

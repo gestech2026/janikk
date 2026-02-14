@@ -124,8 +124,8 @@ const ContactHero = () => {
             </div>
             <div>
               <strong>Phone</strong>
-              <p>+91 8459865102 </p>
-              <p>+91 8698476373</p>
+              <p>+91 9021296895 </p>
+              <p>+91 8459865102</p>
             </div>
           </div>
         </motion.div>

@@ -79,8 +79,8 @@
 //           <div className={styles.contactItem}>
 //             <FiPhone />
 //             <span>
-//               +91 8459865102 <br />
-//               +91 8698476373
+//               +91 9021296895 <br />
+//               +91 8459865102
 //             </span>
 //           </div>
 
@@ -215,8 +215,8 @@ const Footer = () => {
           <div className={styles.contactItem}>
             <FiPhone />
             <span>
-              +91 8459865102 <br />
-              +91 8698476373
+              +91 9021296895 <br />
+              +91 8459865102
             </span>
           </div>
 
