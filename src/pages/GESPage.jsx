@@ -23,6 +23,8 @@ import img4 from "../assets/images/GES/DesignImg4.jpg";
 import typeAImg from "../assets/images/GES/TypeA.jpg";
 import typeBImg from "../assets/images/GES/TypeB.jpg";
 import InstagramFloat from "../components/InstagramFloat.jsx";
+import skimg from "../assets/images/Committee/Skjain.jpg";
+import skig from "../assets/images/Committee/skj.jpg"
 
 const containerVariants = {
   hidden: {},
@@ -54,6 +56,75 @@ const cardVariants = {
 export default function GESPage() {
   const images = [img1, img2, img3, img4];
   const videoRef = useViewportVideoWithSound(0.6);
+  const [selectedOrganizer, setSelectedOrganizer] = React.useState(null);
+  
+const organizingCommittee = [
+  {
+    name: "Sr. Adv. Sohanlal K. Jain",
+    role: "Chairman - Strategic Committee for GES",
+    image: skimg,
+  },
+  {
+    name: "Mr. Pramod Rawat",
+    role: "Chairman - Deccan Education Society",
+    image: skig,
+  },
+  {
+    name: "Dr. Wasudeo Gade",
+    role: "Vice President - Vishwakarma University",
+    image: skimg,
+  },
+  {
+    name: "Dr. Suresh Gosavi",
+    role: "Vice Chancellor - Savitribai Phule Pune University",
+    image: skimg,
+  },
+  {
+    name: "Mr. Rajesh Pande",
+    role: "Chairman - National Yuva Co Operative Society (NYCS)",
+    image: skimg,
+  },
+  {
+    name: "Mr. Prasenjeet Fadanvis",
+    role: "Management Council & Senate",
+    image: skimg,
+  },
+  {
+    name: "Mr. Krishana Kumar Goyal",
+    role: "Chairman - Kohinoor Group, President - KES Society",
+    image: skimg,
+  },
+  {
+    name: "Adv. Ajay Suryawanshi",
+    role: "Managing Director - Janikk International",
+    image: skimg,
+  },
+  {
+    name: "Dr. Girish Desai",
+    role: "Executive Director - Pimpri Chinchwad University",
+    image: skimg,
+  },
+  {
+    name: "Mr. Ramdas Jaid",
+    role: "President - Rotary E Club Of Pune Diamond",
+    image: skimg,
+  },
+  {
+    name: "Ms. Amruta Ruikar",
+    role: "Director - Symbiosis International Relations",
+    image: skimg,
+  },
+  {
+    name: "Ms. Devika Shetty",
+    role: "Trustee - Kaveri Group of Institute",
+    image: skimg,
+  },
+  {
+    name: "Ms. Pooja Thorat",
+    role: "Director - Janikk International",
+    image: skimg,
+  },
+];
   return (
     <div className={styles.GESPage}>
       <InstagramFloat />
@@ -230,6 +301,24 @@ export default function GESPage() {
       <div className={styles.countdownSection}>
         <Count />
       </div>
+                {/* STRATEGIC COMMITTEE SECTION */}
+
+<section className={styles.organizingSection}>
+  <h2 className={styles.title}>Committee Members</h2>
+
+  <div className={styles.organizingGrid}>
+    {organizingCommittee.map((member, index) => (
+      <div
+        key={index}
+        className={styles.organizingCard}
+        //onClick={() => setSelectedOrganizer(member)}
+      >
+        <h4>{member.name}</h4>
+        <p>{member.role}</p>
+      </div>
+    ))}
+  </div>
+</section>
       <div className={styles.infoSection}>
         <SubNavbar />
         <div className={styles.contentSection} id="introduction">
@@ -384,6 +473,28 @@ export default function GESPage() {
             </div>
           </div>
         </section>
+        
+{/* ⭐⭐⭐ ORGANISER MODAL — PASTE RIGHT HERE ⭐⭐⭐ */}
+{selectedOrganizer && (
+  <div
+    className={styles.organizerModalOverlay}
+    onClick={() => setSelectedOrganizer(null)}
+  >
+    <div
+      className={styles.organizerModal}
+      onClick={(e) => e.stopPropagation()}
+    >
+      <button
+        className={styles.closeBtn}
+        onClick={() => setSelectedOrganizer(null)}
+      >
+        ✕
+      </button>
+
+      <img src={selectedOrganizer.image} alt={selectedOrganizer.name} />
+    </div>
+  </div>
+)}
         <section id="contact" className={styles.contactSection}>
           <h2>Contact Details</h2>
 
@@ -412,4 +523,5 @@ export default function GESPage() {
       </div>
     </div>
   );
+  
 }
