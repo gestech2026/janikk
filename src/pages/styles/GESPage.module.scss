@@ -684,3 +684,101 @@
     transform: scale(1.08);
   }
 }
+/* =======================================================
+   ⭐ OUR PARTICIPANTS SECTION ⭐
+   Clean summit-style scrolling logos
+   ======================================================= */
+
+.participantsSection {
+  padding: 80px 20px;          // Section spacing
+  text-align: center;
+  background: #ffffff;         // Clean white background
+
+  .title {
+    font-size: 32px;           // Matches your headings
+    margin-bottom: 45px;
+    font-weight: 700;
+  }
+}
+
+/* =======================================================
+   ⭐ MARQUEE LAYOUT ⭐
+   Two rows container
+   ======================================================= */
+
+.marqueeWrapper {
+  display: flex;
+  flex-direction: column;      // Stack rows vertically
+  gap: 30px;                   // Space between rows
+}
+
+.marquee {
+  overflow: hidden;            // Hide scrolling overflow
+  width: 100%;
+  position: relative;
+}
+
+/* =======================================================
+   ⭐ LOGO TRACK ⭐
+   Horizontal strip of logos
+   ======================================================= */
+
+.track {
+  display: flex;
+  gap: 70px;                   // Premium spacing between logos
+  width: max-content;          // Allows infinite scroll
+}
+
+/* =======================================================
+   ⭐ ANIMATIONS ⭐
+   Opposite direction movement
+   ======================================================= */
+
+.left .track {
+  animation: scrollLeft 35s linear infinite;     // Row 1 → Left
+}
+
+.right .track {
+  animation: scrollRight 35s linear infinite;     // Row 2 → Right
+}
+
+/* =======================================================
+   ⭐ LOGO SIZE FIX ⭐
+   Handles mixed logo dimensions
+   VERY IMPORTANT
+   ======================================================= */
+
+.logoItem {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 140px;                // Uniform visual spacing
+}
+
+.logoItem img {
+  max-height: 75px;            // Consistent logo height
+  max-width: 160px;            // Prevents oversized logos
+  object-fit: contain;         // No stretching
+  opacity: 1;               // Soft premium look
+
+  transition: all 0.3s ease;   // Smooth hover effect
+
+  &:hover {
+    transform: scale(1.08);    // Slight zoom
+  }
+}
+
+/* =======================================================
+   ⭐ SCROLL ANIMATION KEYFRAMES ⭐
+   Infinite smooth movement
+   ======================================================= */
+
+@keyframes scrollLeft {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+@keyframes scrollRight {
+  from { transform: translateX(-50%); }
+  to { transform: translateX(0); }
+}

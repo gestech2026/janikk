@@ -25,7 +25,17 @@ import typeBImg from "../assets/images/GES/TypeB.jpg";
 import InstagramFloat from "../components/InstagramFloat.jsx";
 import skimg from "../assets/images/Committee/Skjain.jpg";
 import skig from "../assets/images/Committee/skj.jpg"
-
+import p1 from "../assets/images/Participants/logo1.png"
+import p2 from "../assets/images/Participants/logo2.png";
+import p3 from "../assets/images/Participants/logo3.png";
+import p4 from "../assets/images/Participants/logo4.png";
+import p5 from "../assets/images/Participants/logo5.png";
+import p6 from "../assets/images/Participants/logo6.png";
+import p7 from "../assets/images/Participants/logo7.png";
+import p8 from "../assets/images/Participants/logo8.png";
+import p9 from "../assets/images/Participants/logo9.png";
+import p10 from "../assets/images/Participants/logo10.png";
+import p11 from "../assets/images/Participants/logo11.png";
 const containerVariants = {
   hidden: {},
   visible: {
@@ -125,6 +135,12 @@ const organizingCommittee = [
     image: skimg,
   },
 ];
+
+const participantsRow1 = [p4, p9];
+const participantsRow2 = [p5, p7, p10];
+
+const row1 = [...participantsRow1, ...participantsRow1];
+const row2 = [...participantsRow2, ...participantsRow2];
   return (
     <div className={styles.GESPage}>
       <InstagramFloat />
@@ -317,6 +333,33 @@ const organizingCommittee = [
         <p>{member.role}</p>
       </div>
     ))}
+  </div>
+</section>
+<section className={styles.participantsSection}>
+  <h2 className={styles.title}>Our Participants</h2>
+
+  <div className={styles.marqueeWrapper}>
+    
+    <div className={`${styles.marquee} ${styles.left}`}>
+      <div className={styles.track}>
+        {row1.map((logo, index) => (
+          <div key={index} className={styles.logoItem}>
+            <img src={logo} alt="Participant Logo" />
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <div className={`${styles.marquee} ${styles.right}`}>
+      <div className={styles.track}>
+        {row2.map((logo, index) => (
+          <div key={index} className={styles.logoItem}>
+            <img src={logo} alt="Participant Logo" />
+          </div>
+        ))}
+      </div>
+    </div>
+
   </div>
 </section>
       <div className={styles.infoSection}>
