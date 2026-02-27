@@ -7,7 +7,7 @@ const InstagramFloat = () => {
 
   return (
     <a
-      href="https://www.instagram.com/global.education.summit/"
+      href="https://www.instagram.com/global_educationsummit?igsh=ajgzOXRiMzdhYWlq"
       target="_blank"
       rel="noopener noreferrer"
       className={`${styles.instagram} ${open ? styles.open : ""}`}
