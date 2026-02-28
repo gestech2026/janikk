@@ -36,6 +36,7 @@ import p8 from "../assets/images/Participants/logo8.png";
 import p9 from "../assets/images/Participants/logo9.png";
 import p10 from "../assets/images/Participants/logo10.png";
 import p11 from "../assets/images/Participants/logo11.png";
+import p12 from "../assets/images/Participants/logo12.png";
 const containerVariants = {
   hidden: {},
   visible: {
@@ -136,11 +137,11 @@ const organizingCommittee = [
   },
 ];
 
-const participantsRow1 = [p4, p9];
+const participantsRow1 = [p4, p9, p11, p12];
 const participantsRow2 = [p5, p7, p10];
 
-const row1 = [...participantsRow1, ...participantsRow1];
-const row2 = [...participantsRow2, ...participantsRow2];
+const row1 = [...participantsRow1, ...participantsRow1, ...participantsRow1];
+const row2 = [...participantsRow2, ...participantsRow2, ...participantsRow2];
   return (
     <div className={styles.GESPage}>
       <InstagramFloat />
@@ -336,7 +337,7 @@ const row2 = [...participantsRow2, ...participantsRow2];
   </div>
 </section>
 <section className={styles.participantsSection}>
-  <h2 className={styles.title}>Our Participants</h2>
+  <h2 className={styles.title}>Our Associates</h2>
 
   <div className={styles.marqueeWrapper}>
     
