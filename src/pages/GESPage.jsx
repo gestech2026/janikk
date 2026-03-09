@@ -148,6 +148,15 @@ const row2 = [...participantsRow2, ...participantsRow2, ...participantsRow2];
       <div className={styles.heroSection}>
         <video src={video} ref={videoRef} autoPlay loop muted></video>
       </div>
+      <div className={styles.noticeBanner}>
+  <h3>Important Announcement</h3>
+  <p>
+    The Global Education Summit 2026 has been postponed until further notice due to the evolving international situation. 
+    Unfortunately, several international universities confirmed their participation, but are now unable to travel due to unforeseen circumstances. 
+    As international collaborations were central to the summit's objectives, we have made this decision. New dates will be announced shortly. 
+    We appreciate your understanding and continued support during this challenging time.
+  </p>
+</div>
       {/* <div className={styles.darkOverlay}>
         <div className={styles.mainHeading}>
           <h1>Global Education Summit 2026</h1>
@@ -251,7 +260,7 @@ const row2 = [...participantsRow2, ...participantsRow2, ...participantsRow2];
                 </svg>
               </motion.span>
               <p className={styles.label}>Date</p>
-              <h5>27th – 29th March 2026</h5>
+              <h5>Postponed Until Further Notice</h5>
             </motion.div>
 
             <motion.div variants={cardVariants} className={styles.card}>
@@ -305,19 +314,28 @@ const row2 = [...participantsRow2, ...participantsRow2, ...participantsRow2];
 
           {/* Buttons */}
           <motion.div variants={cardVariants} className={styles.actions}>
-            <Link to="/studentregister" className={styles.primaryBtn}>
+            {/* <Link to="/studentregister" className={styles.primaryBtn}>
               Student Registration
             </Link>
             <Link to="/exibitorsregister" className={styles.secondaryBtn}>
               University/ Institute Registration
-            </Link>
+            </Link> */}
+            <button className={styles.disabledBtn} disabled>
+  Student Registration Closed
+</button>
+
+<button className={styles.disabledBtn} disabled>
+  University / Institute Registration Closed
+</button>
             
           </motion.div>
         </motion.div>
       </div>
-      <div className={styles.countdownSection}>
-        <Count />
-      </div>
+   {/* Countdown disabled as event is postponed
+<div className={styles.countdownSection}>
+  <Count />
+</div>
+*/}
                 {/* STRATEGIC COMMITTEE SECTION */}
 
 <section className={styles.organizingSection}>
@@ -336,6 +354,9 @@ const row2 = [...participantsRow2, ...participantsRow2, ...participantsRow2];
     ))}
   </div>
 </section>
+
+{/* Associates section hidden temporarily as event is postponed
+
 <section className={styles.participantsSection}>
   <h2 className={styles.title}>Our Associates</h2>
 
@@ -363,6 +384,7 @@ const row2 = [...participantsRow2, ...participantsRow2, ...participantsRow2];
 
   </div>
 </section>
+*/}
       <div className={styles.infoSection}>
         <SubNavbar />
         <div className={styles.contentSection} id="introduction">
@@ -470,11 +492,12 @@ const row2 = [...participantsRow2, ...participantsRow2, ...participantsRow2];
                 <span>Type A</span>
                 <h3>OCTONORM STRUCTURE</h3>
               </div>
-
+            {/*
               <div className={styles.priceBox}>
                 <strong>$ 450</strong>
                 <p>per square meter</p>
               </div>
+              */}
 
               <div className={styles.imageBox}>
                 <img src={typeAImg} alt="Octonorm Structure" />
@@ -496,12 +519,12 @@ const row2 = [...participantsRow2, ...participantsRow2, ...participantsRow2];
                 <span>Type B</span>
                 <h3>BARE SHELL ISLAND BOOTH</h3>
               </div>
-
+              {/*
               <div className={styles.priceBox}>
                 <strong>$ 420</strong>
                 <p>per square meter</p>
               </div>
-
+              */}
               <div className={styles.imageBox}>
                 <img src={typeBImg} alt="Bare Shell Island Booth" />
               </div>
