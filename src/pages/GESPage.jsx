@@ -101,7 +101,7 @@ const organizingCommittee = [
     image: skimg,
   },
   {
-    name: "Mr. Krishana Kumar Goyal",
+    name: "Mr. Krishna Kumar Goyal",
     role: "Chairman - Kohinoor Group, President - KES Society",
     image: skimg,
   },
