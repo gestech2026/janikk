@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
+import emailjs from "@emailjs/browser";
 import styles from "./styles/ContactUs.module.scss";
 import img from "../assets/images/About/RightSide.webp";
+
 const container = {
   hidden: {},
   show: {
@@ -28,6 +30,7 @@ const ContactHero = () => {
   });
 
   const [errors, setErrors] = useState({});
+  const [sending, setSending] = useState(false);
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -41,14 +44,46 @@ const ContactHero = () => {
     if (!/\S+@\S+\.\S+/.test(form.email)) err.email = true;
     if (!form.message) err.message = true;
     if (!form.agree) err.agree = true;
+
     setErrors(err);
     return Object.keys(err).length === 0;
   };
 
   const submit = (e) => {
     e.preventDefault();
+
     if (!validate()) return;
-    alert("Message sent successfully");
+
+    setSending(true);
+
+    emailjs
+      .send(
+        "service_crug6qf",   // replace
+        "template_gbul10q",  // replace
+        form,
+        "jzCkBI0Pht_3dQCxL"    // replace
+      )
+      .then(
+        () => {
+          alert("Message sent successfully!");
+
+          setForm({
+            firstName: "",
+            lastName: "",
+            email: "",
+            message: "",
+            agree: false,
+          });
+
+          setErrors({});
+          setSending(false);
+        },
+        (error) => {
+          console.error(error);
+          alert("Failed to send message.");
+          setSending(false);
+        }
+      );
   };
 
   return (
@@ -67,7 +102,8 @@ const ContactHero = () => {
           onSubmit={submit}
         >
           <span className={styles.kicker}>Get in Touch</span>
-          <h1> Reach Out to Us</h1>
+          <h1>Reach Out to Us</h1>
+
           <p className={styles.subtitle}>
             Have questions or feedback? Send us a message and we’ll respond
             within 24 hours.
@@ -77,12 +113,15 @@ const ContactHero = () => {
             <input
               placeholder="First name"
               name="firstName"
+              value={form.firstName}
               onChange={handleChange}
               className={errors.firstName ? styles.error : ""}
             />
+
             <input
               placeholder="Last name"
               name="lastName"
+              value={form.lastName}
               onChange={handleChange}
               className={errors.lastName ? styles.error : ""}
             />
@@ -91,6 +130,7 @@ const ContactHero = () => {
           <input
             placeholder="Email address"
             name="email"
+            value={form.email}
             onChange={handleChange}
             className={errors.email ? styles.error : ""}
           />
@@ -99,32 +139,42 @@ const ContactHero = () => {
             placeholder="Leave us message"
             rows="4"
             name="message"
+            value={form.message}
             onChange={handleChange}
             className={errors.message ? styles.error : ""}
           />
 
           <label className={styles.checkbox}>
-            <input type="checkbox" name="agree" onChange={handleChange} />I
-            agree to our friendly privacy policy
+            <input
+              type="checkbox"
+              name="agree"
+              checked={form.agree}
+              onChange={handleChange}
+            />
+            I agree to our friendly privacy policy
           </label>
 
-          <button type="submit">Send Message</button>
+          <button type="submit" disabled={sending}>
+            {sending ? "Sending..." : "Send Message"}
+          </button>
         </motion.form>
 
         {/* RIGHT PANEL */}
         <motion.div className={styles.rightPanel} variants={fadeUp}>
           <div className={styles.imageBox}>
-            <img src={img} alt="" />
+            <img src={img} alt="Contact" />
           </div>
 
           <div className={styles.contactCard}>
             <div>
               <strong>Email</strong>
-              <p>info.ges@janikkintl.in </p> <p>janikk.intl@gmail.com</p>
+              <p>info.ges@janikkintl.in</p>
+              <p>janikk.intl@gmail.com</p>
             </div>
+
             <div>
               <strong>Phone</strong>
-              <p>+91 9021296895 </p>
+              <p>+91 9021296895</p>
               <p>+91 8459865102</p>
             </div>
           </div>
